@@ -1112,7 +1112,7 @@ traceln(
     agent.minDwell,
     agent.scheduledDeparture - time()
 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1210,7 +1210,7 @@ traceln(
     agent.minDwell,
     agent.scheduledDeparture - time()
 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1308,7 +1308,7 @@ traceln(
     agent.minDwell,
     agent.scheduledDeparture - time()
 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1406,7 +1406,7 @@ traceln(
     agent.minDwell,
     agent.scheduledDeparture - time()
 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2561,8 +2561,8 @@ if (completed == 10) {
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1794700800000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1794730800000]]></FinalDate>
-				<FinalTime><![CDATA[500.0]]></FinalTime>
+				<FinalDate><![CDATA[1794704400000]]></FinalDate>
+				<FinalTime><![CDATA[60.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>	
