@@ -1,0 +1,7 @@
+﻿route_group,service,direction_toward,entry_corridor,exit_corridor,representative_db_platform,model_allowed_platforms
+RB16_S,RB16,S,N_TREU,S_MUC,2,2|3
+RE1_S,RE1,S,N_HSR,S_MUC,3,2|3|5
+ICE_S,ICE,S,N_HSR,S_MUC,3,3
+RB16_N,RB16,N,S_MUC,N_TREU,5,4|5
+RE1_N,RE1,N,S_MUC,N_HSR,4,4|5
+ICE_N,ICE,N,S_MUC,N_HSR,4,4|5
