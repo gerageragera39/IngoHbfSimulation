@@ -131,7 +131,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["GREEDY"]]></Code>
+							<Code><![CDATA["FIXED_DB"]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -285,12 +285,102 @@
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794839192314</Id>
+					<Name><![CDATA[scenarioId]]></Name>
+					<X>525</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA["S001"]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794839209864</Id>
+					<Name><![CDATA[scenarioSeed]]></Name>
+					<X>530</X><Y>75</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[101]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794839218017</Id>
+					<Name><![CDATA[zeroDelayProbability]]></Name>
+					<X>685</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.30]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794839222728</Id>
+					<Name><![CDATA[meanPositiveDelay]]></Name>
+					<X>685</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[4.0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794839227157</Id>
+					<Name><![CDATA[maxIncomingDelay]]></Name>
+					<X>895</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[30.0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794839272572</Id>
+					<Name><![CDATA[scenarioRows]]></Name>
+					<X>730</X><Y>155</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[java.util.ArrayList<String>]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new java.util.ArrayList<String>()]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
 			<Connectors>
 				<Connector>
 					<Id>1794744181291</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>240</X><Y>320</Y>
+					<X>370</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -317,15 +407,15 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>220</X><Y>-60</Y></Point>
-						<Point><X>260</X><Y>-60</Y></Point>
-						<Point><X>320</X><Y>-60</Y></Point>
+						<Point><X>90</X><Y>-90</Y></Point>
+						<Point><X>130</X><Y>-90</Y></Point>
+						<Point><X>190</X><Y>-90</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1794744183648</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>240</X><Y>340</Y>
+					<X>370</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -352,15 +442,15 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>220</X><Y>20</Y></Point>
-						<Point><X>260</X><Y>20</Y></Point>
-						<Point><X>320</X><Y>20</Y></Point>
+						<Point><X>90</X><Y>-10</Y></Point>
+						<Point><X>130</X><Y>-10</Y></Point>
+						<Point><X>190</X><Y>-10</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1794744185989</Id>
 					<Name><![CDATA[connector6]]></Name>
-					<X>240</X><Y>360</Y>
+					<X>370</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -387,15 +477,15 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>220</X><Y>100</Y></Point>
-						<Point><X>260</X><Y>100</Y></Point>
-						<Point><X>320</X><Y>100</Y></Point>
+						<Point><X>90</X><Y>70</Y></Point>
+						<Point><X>130</X><Y>70</Y></Point>
+						<Point><X>190</X><Y>70</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1794744188283</Id>
 					<Name><![CDATA[connector7]]></Name>
-					<X>240</X><Y>380</Y>
+					<X>370</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -422,48 +512,15 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>220</X><Y>160</Y></Point>
-						<Point><X>260</X><Y>160</Y></Point>
-						<Point><X>320</X><Y>160</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1794744499901</Id>
-					<Name><![CDATA[connector9]]></Name>
-					<X>110</X><Y>360</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[ingo]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[wait]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Wait]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[ingo]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[fromNorth]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Source]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-50</X><Y>-40</Y></Point>
+						<Point><X>90</X><Y>130</Y></Point>
+						<Point><X>130</X><Y>130</Y></Point>
+						<Point><X>190</X><Y>130</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1794744506482</Id>
 					<Name><![CDATA[connector8]]></Name>
-					<X>150</X><Y>360</Y>
+					<X>290</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -490,40 +547,7 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>70</X><Y>-40</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1794746731853</Id>
-					<Name><![CDATA[connector10]]></Name>
-					<X>60</X><Y>400</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[ingo]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[fromSouth]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Source]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[ingo]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[wait]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Wait]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>50</X><Y>-40</Y></Point>
+						<Point><X>60</X><Y>-10</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -688,7 +712,139 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-80</X><Y>-140</Y></Point>
+						<Point><X>50</X><Y>-110</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1794839087903</Id>
+					<Name><![CDATA[connector12]]></Name>
+					<X>95</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[approachNorth]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[fromNorth]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Source]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-75</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1794839129883</Id>
+					<Name><![CDATA[connector9]]></Name>
+					<X>95</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[approachSouth]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[fromSouth]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Source]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-75</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1794839156692</Id>
+					<Name><![CDATA[connector10]]></Name>
+					<X>135</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[approachSouth]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[wait]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Wait]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>115</X><Y>-40</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1794839160248</Id>
+					<Name><![CDATA[connector13]]></Name>
+					<X>135</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[approachNorth]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[wait]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Wait]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>115</X><Y>40</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -923,7 +1079,9 @@ String row = String.join(",",
 );
 
 // Сохраняем строку в памяти
-resultRows.add(row);
+resultRows.add(
+    row + "," + scenarioId + "," + scenarioSeed
+);
 
 // Обновляем общую статистику
 totalWaitingTime += waitingTime;
@@ -951,7 +1109,9 @@ try {
 
     // Имя файла зависит от стратегии
     String fileName =
-        "train_results_" + policy + ".csv";
+	    "train_results_" + policy +
+	    "_" + scenarioId +
+	    "_seed" + scenarioSeed + ".csv";
 
     java.nio.file.Path output =
         folder.resolve(fileName);
@@ -972,7 +1132,9 @@ try {
         "min_dwell",
         "waiting_min",
         "station_delay_min",
-        "reassigned"
+        "reassigned",
+		"scenario_id",
+		"scenario_seed"
     );
 
     java.util.ArrayList<String> lines =
@@ -1002,13 +1164,171 @@ try {
 }
 ]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1794839303874</Id>
+					<Name><![CDATA[generateIncomingDelay]]></Name>
+					<X>825</X><Y>645</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[trainId]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[
+if (zeroDelayProbability < 0 ||
+    zeroDelayProbability > 1 ||
+    meanPositiveDelay <= 0 ||
+    maxIncomingDelay <= 0) {
+
+    throw new IllegalArgumentException(
+        "Invalid delay distribution parameters"
+    );
+}
+
+// Создаём отдельный воспроизводимый seed
+// для каждого ID поезда.
+long trainSeed =
+    1000003L * (long) scenarioSeed +
+    (long) trainId.hashCode();
+
+java.util.Random rng =
+    new java.util.Random(trainSeed);
+
+// Вероятность отсутствия опоздания
+if (rng.nextDouble() < zeroDelayProbability) {
+    return 0.0;
+}
+
+// Экспоненциальное распределение
+double u = rng.nextDouble();
+
+double delay =
+    -meanPositiveDelay * Math.log1p(-u);
+
+// Ограничиваем максимальную задержку
+return Math.min(delay, maxIncomingDelay);
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1794839540781</Id>
+					<Name><![CDATA[recordScenarioTrain]]></Name>
+					<X>65</X><Y>700</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[t]]></Name>
+						<Type><![CDATA[TrainRequest]]></Type>
+					</Parameter>
+					<Body><![CDATA[
+// Разрешённые платформы
+StringBuilder allowed = new StringBuilder();
+
+for (int i = 0; i < t.allowedPlatforms.length; i++) {
+
+    if (i > 0) {
+        allowed.append("|");
+    }
+
+    allowed.append(t.allowedPlatforms[i]);
+}
+
+// Строка исходного сценария
+String row = String.join(",",
+    scenarioId,
+    String.valueOf(scenarioSeed),
+    t.trainId,
+    t.routeGroup,
+    String.valueOf(t.plannedPlatform),
+    String.valueOf(t.scheduledArrival),
+    String.valueOf(t.scheduledDeparture),
+    String.valueOf(t.incomingDelay),
+    String.valueOf(t.readyTime),
+    allowed.toString()
+);
+
+scenarioRows.add(row);
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1794839599852</Id>
+					<Name><![CDATA[saveScenarioCsv]]></Name>
+					<X>290</X><Y>700</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[
+try {
+
+    java.nio.file.Path folder =
+        java.nio.file.Paths.get("results");
+
+    java.nio.file.Files.createDirectories(folder);
+
+    String fileName =
+        "delay_scenarios_" +
+        scenarioId +
+        "_seed" + scenarioSeed + ".csv";
+
+    java.nio.file.Path output =
+        folder.resolve(fileName);
+
+    String header = String.join(",",
+        "scenario_id",
+        "scenario_seed",
+        "train_id",
+        "route_group",
+        "planned_platform",
+        "scheduled_arrival",
+        "scheduled_departure",
+        "incoming_delay",
+        "ready_time",
+        "allowed_platforms"
+    );
+
+    java.util.ArrayList<String> lines =
+        new java.util.ArrayList<String>();
+
+    lines.add(header);
+    lines.addAll(scenarioRows);
+
+    java.nio.file.Files.write(
+        output,
+        lines,
+        java.nio.charset.StandardCharsets.UTF_8
+    );
+
+    traceln(
+        "SCENARIO SAVED | " +
+        output.toAbsolutePath() +
+        " | Trains: " + scenarioRows.size()
+    );
+
+} catch (java.io.IOException e) {
+
+    throw new RuntimeException(
+        "Failed to save delay scenario", e
+    );
+}
+]]></Body>
+				</Function>
 			</Functions>
 
 			<EmbeddedObjects>
 				<EmbeddedObject>
 					<Id>1794743878392</Id>
 					<Name><![CDATA[fromNorth]]></Name>
-					<X>30</X><Y>310</Y>
+					<X>-10</X><Y>310</Y>
 					<Label><X>-10</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1222,9 +1542,15 @@ int i = northSeq++;
 agent.sequence = trainSeq++;
 agent.trainId = "N" + (i + 1);
 
+
 agent.scheduledArrival = time();
-agent.readyTime = time();
-agent.incomingDelay = 0;
+
+agent.incomingDelay =
+    generateIncomingDelay(agent.trainId);
+
+agent.readyTime =
+    agent.scheduledArrival + agent.incomingDelay;
+
 
 agent.minDwell = 3;
 agent.scheduledDeparture = time() + 5;
@@ -1257,6 +1583,8 @@ traceln(
     " | " + agent.routeGroup +
     " | Planned Gleis: " + agent.plannedPlatform
 );
+
+recordScenarioTrain(agent);
 ]]></Code>
 							</Value>
 						</Parameter>
@@ -1684,7 +2012,7 @@ traceln(
 				<EmbeddedObject>
 					<Id>1794744009815</Id>
 					<Name><![CDATA[selectOutput5]]></Name>
-					<X>210</X><Y>310</Y>
+					<X>340</X><Y>340</Y>
 					<Label><X>-40</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1790,7 +2118,7 @@ traceln(
 				<EmbeddedObject>
 					<Id>1794744498832</Id>
 					<Name><![CDATA[wait]]></Name>
-					<X>110</X><Y>340</Y>
+					<X>250</X><Y>340</Y>
 					<Label><X>0</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1815,6 +2143,9 @@ traceln(
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[entityLocation]]></Name>
@@ -1893,7 +2224,7 @@ traceln(
 				<EmbeddedObject>
 					<Id>1794746717464</Id>
 					<Name><![CDATA[fromSouth]]></Name>
-					<X>30</X><Y>390</Y>
+					<X>-10</X><Y>390</Y>
 					<Label><X>-10</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2104,9 +2435,15 @@ int i = southSeq++;
 agent.sequence = trainSeq++;
 agent.trainId = "S" + (i + 1);
 
+
 agent.scheduledArrival = time();
-agent.readyTime = time();
-agent.incomingDelay = 0;
+
+agent.incomingDelay =
+    generateIncomingDelay(agent.trainId);
+
+agent.readyTime =
+    agent.scheduledArrival + agent.incomingDelay;
+
 
 agent.minDwell = 3;
 agent.scheduledDeparture = time() + 5;
@@ -2139,7 +2476,8 @@ traceln(
     " | " + agent.routeGroup +
     " | Planned Gleis: " + agent.plannedPlatform
 );
-]]></Code>
+
+recordScenarioTrain(agent);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2235,6 +2573,7 @@ if (completed % 20 == 0 ||
     completed == 2 * trainsPerDirection) {
 
     saveResultsCsv();
+    saveScenarioCsv();
 }
 
 // Итоговый отчёт
@@ -2355,6 +2694,198 @@ if (completed == 2 * trainsPerDirection) {
 					<InitializationType>SPECIFIED_NUMBER</InitializationType>
 					<InitializationDatabaseTableQuery>
 						<Id>1794773876911</Id>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1794839086835</Id>
+					<Name><![CDATA[approachNorth]]></Name>
+					<X>95</X><Y>300</Y>
+					<Label><X>-5</X><Y>-15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Delay]]></ClassName>
+							<ItemName><![CDATA[1412336242930]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[type]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayTime]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[agent.incomingDelay]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[capacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[entityLocation]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pushProtocol]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[restoreEntityLocationOnExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[forceStatisticsCollection]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[traceln(
+    "READY | " + agent.trainId +
+    " | Time: " + time() +
+    " | Incoming delay: " + agent.incomingDelay
+);]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onRemove]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>XYZ</InitialLocationType>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<Id>1794839086833</Id>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1794839127946</Id>
+					<Name><![CDATA[approachSouth]]></Name>
+					<X>95</X><Y>380</Y>
+					<Label><X>-5</X><Y>-15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Delay]]></ClassName>
+							<ItemName><![CDATA[1412336242930]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[type]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayTime]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[agent.incomingDelay]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[capacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[entityLocation]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pushProtocol]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[restoreEntityLocationOnExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[forceStatisticsCollection]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[traceln(
+    "READY | " + agent.trainId +
+    " | Time: " + time() +
+    " | Incoming delay: " + agent.incomingDelay
+);]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onRemove]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>XYZ</InitialLocationType>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<Id>1794839127944</Id>
 						<TableReference>
 						</TableReference>
 					</InitializationDatabaseTableQuery>
