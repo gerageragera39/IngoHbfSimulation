@@ -123,7 +123,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774039166</Id>
 					<Name><![CDATA[policy]]></Name>
-					<X>50</X><Y>50</Y>
+					<X>340</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -138,7 +138,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774049373</Id>
 					<Name><![CDATA[occupied]]></Name>
-					<X>50</X><Y>20</Y>
+					<X>340</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -153,7 +153,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774074051</Id>
 					<Name><![CDATA[trainSeq]]></Name>
-					<X>190</X><Y>80</Y>
+					<X>330</X><Y>-30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -168,7 +168,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774087547</Id>
 					<Name><![CDATA[northSeq]]></Name>
-					<X>190</X><Y>20</Y>
+					<X>330</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -183,7 +183,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774100772</Id>
 					<Name><![CDATA[southSeq]]></Name>
-					<X>190</X><Y>50</Y>
+					<X>330</X><Y>-60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -198,7 +198,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774114861</Id>
 					<Name><![CDATA[completed]]></Name>
-					<X>340</X><Y>20</Y>
+					<X>630</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -213,7 +213,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774124027</Id>
 					<Name><![CDATA[totalStationDelay]]></Name>
-					<X>340</X><Y>80</Y>
+					<X>100</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -228,7 +228,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794835799327</Id>
 					<Name><![CDATA[resultRows]]></Name>
-					<X>300</X><Y>160</Y>
+					<X>580</X><Y>-30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -243,7 +243,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794835843242</Id>
 					<Name><![CDATA[trainsPerDirection]]></Name>
-					<X>20</X><Y>80</Y>
+					<X>150</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -258,7 +258,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794835866020</Id>
 					<Name><![CDATA[totalWaitingTime]]></Name>
-					<X>80</X><Y>160</Y>
+					<X>100</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -273,7 +273,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794835885605</Id>
 					<Name><![CDATA[reassignmentCount]]></Name>
-					<X>490</X><Y>160</Y>
+					<X>630</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -288,7 +288,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794839192314</Id>
 					<Name><![CDATA[scenarioId]]></Name>
-					<X>525</X><Y>20</Y>
+					<X>340</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -303,7 +303,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794839209864</Id>
 					<Name><![CDATA[scenarioSeed]]></Name>
-					<X>530</X><Y>75</Y>
+					<X>340</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -318,7 +318,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794839218017</Id>
 					<Name><![CDATA[zeroDelayProbability]]></Name>
-					<X>685</X><Y>20</Y>
+					<X>820</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -333,7 +333,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794839222728</Id>
 					<Name><![CDATA[meanPositiveDelay]]></Name>
-					<X>685</X><Y>70</Y>
+					<X>1010</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -348,7 +348,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794839227157</Id>
 					<Name><![CDATA[maxIncomingDelay]]></Name>
-					<X>895</X><Y>20</Y>
+					<X>1010</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -363,7 +363,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794839272572</Id>
 					<Name><![CDATA[scenarioRows]]></Name>
-					<X>730</X><Y>155</Y>
+					<X>630</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -380,7 +380,7 @@
 				<Connector>
 					<Id>1794744181291</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>370</X><Y>350</Y>
+					<X>500</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -388,7 +388,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[ingo]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[selectOutput5]]></ItemName>
+						<ItemName><![CDATA[Dispatcher]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -407,15 +407,15 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>-90</Y></Point>
-						<Point><X>130</X><Y>-90</Y></Point>
-						<Point><X>190</X><Y>-90</Y></Point>
+						<Point><X>90</X><Y>-100</Y></Point>
+						<Point><X>130</X><Y>-100</Y></Point>
+						<Point><X>190</X><Y>-100</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1794744183648</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>370</X><Y>370</Y>
+					<X>500</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -423,7 +423,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[ingo]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[selectOutput5]]></ItemName>
+						<ItemName><![CDATA[Dispatcher]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -442,15 +442,15 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>-10</Y></Point>
-						<Point><X>130</X><Y>-10</Y></Point>
-						<Point><X>190</X><Y>-10</Y></Point>
+						<Point><X>90</X><Y>-20</Y></Point>
+						<Point><X>130</X><Y>-20</Y></Point>
+						<Point><X>190</X><Y>-20</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1794744185989</Id>
 					<Name><![CDATA[connector6]]></Name>
-					<X>370</X><Y>390</Y>
+					<X>500</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -458,7 +458,7 @@
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[ingo]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[selectOutput5]]></ItemName>
+						<ItemName><![CDATA[Dispatcher]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -477,50 +477,15 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>70</Y></Point>
-						<Point><X>130</X><Y>70</Y></Point>
-						<Point><X>190</X><Y>70</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1794744188283</Id>
-					<Name><![CDATA[connector7]]></Name>
-					<X>370</X><Y>410</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[ingo]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[selectOutput5]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[SelectOutput5]]></ClassName>
-						<ItemName><![CDATA[out4]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[ingo]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[Gleis5]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>130</Y></Point>
-						<Point><X>130</X><Y>130</Y></Point>
-						<Point><X>190</X><Y>130</Y></Point>
+						<Point><X>90</X><Y>60</Y></Point>
+						<Point><X>130</X><Y>60</Y></Point>
+						<Point><X>190</X><Y>60</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1794744506482</Id>
 					<Name><![CDATA[connector8]]></Name>
-					<X>290</X><Y>360</Y>
+					<X>420</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -538,7 +503,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ingo]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[selectOutput5]]></ItemName>
+						<ItemName><![CDATA[Dispatcher]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -547,13 +512,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>60</X><Y>-10</Y></Point>
+						<Point><X>60</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1794772731427</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>600</X><Y>260</Y>
+					<X>730</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -571,7 +536,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ingo]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[sink]]></ItemName>
+						<ItemName><![CDATA[LeftHBF]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -586,7 +551,7 @@
 				<Connector>
 					<Id>1794772734449</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>600</X><Y>360</Y>
+					<X>730</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -604,7 +569,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ingo]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[sink]]></ItemName>
+						<ItemName><![CDATA[LeftHBF]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -619,7 +584,7 @@
 				<Connector>
 					<Id>1794772737186</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>600</X><Y>460</Y>
+					<X>730</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -637,7 +602,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ingo]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[sink]]></ItemName>
+						<ItemName><![CDATA[LeftHBF]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -652,7 +617,7 @@
 				<Connector>
 					<Id>1794772740302</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>600</X><Y>540</Y>
+					<X>730</X><Y>560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -670,7 +635,7 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ingo]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[sink]]></ItemName>
+						<ItemName><![CDATA[LeftHBF]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -679,46 +644,13 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>200</X><Y>-160</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1794773878524</Id>
-					<Name><![CDATA[connector11]]></Name>
-					<X>320</X><Y>540</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[ingo]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[sink1]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Sink]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[ingo]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[selectOutput5]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[SelectOutput5]]></ClassName>
-						<ItemName><![CDATA[out5]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>50</X><Y>-110</Y></Point>
+						<Point><X>200</X><Y>-180</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1794839087903</Id>
 					<Name><![CDATA[connector12]]></Name>
-					<X>95</X><Y>320</Y>
+					<X>225</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -751,7 +683,7 @@
 				<Connector>
 					<Id>1794839129883</Id>
 					<Name><![CDATA[connector9]]></Name>
-					<X>95</X><Y>400</Y>
+					<X>225</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -784,7 +716,7 @@
 				<Connector>
 					<Id>1794839156692</Id>
 					<Name><![CDATA[connector10]]></Name>
-					<X>135</X><Y>400</Y>
+					<X>265</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -817,7 +749,7 @@
 				<Connector>
 					<Id>1794839160248</Id>
 					<Name><![CDATA[connector13]]></Name>
-					<X>135</X><Y>320</Y>
+					<X>265</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -845,6 +777,76 @@
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>115</X><Y>40</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1794840820662</Id>
+					<Name><![CDATA[connector7]]></Name>
+					<X>500</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Dispatcher]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutput5]]></ClassName>
+						<ItemName><![CDATA[out4]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Gleis5]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>100</X><Y>140</Y></Point>
+						<Point><X>190</X><Y>140</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1794840918494</Id>
+					<Name><![CDATA[connector11]]></Name>
+					<X>500</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Dispatcher]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutput5]]></ClassName>
+						<ItemName><![CDATA[out5]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ingo]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[troubleshooting]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>35</Y></Point>
+						<Point><X>-125</X><Y>35</Y></Point>
+						<Point><X>-125</X><Y>90</Y></Point>
+						<Point><X>-90</X><Y>90</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -1332,7 +1334,7 @@ try {
 				<EmbeddedObject>
 					<Id>1794743878392</Id>
 					<Name><![CDATA[fromNorth]]></Name>
-					<X>-10</X><Y>310</Y>
+					<X>120</X><Y>310</Y>
 					<Label><X>-10</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1624,7 +1626,7 @@ recordScenarioTrain(agent);
 				<EmbeddedObject>
 					<Id>1794743920089</Id>
 					<Name><![CDATA[Gleis5]]></Name>
-					<X>560</X><Y>520</Y>
+					<X>690</X><Y>540</Y>
 					<Label><X>-5</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1722,7 +1724,7 @@ traceln(
 				<EmbeddedObject>
 					<Id>1794743922656</Id>
 					<Name><![CDATA[Gleis2]]></Name>
-					<X>560</X><Y>240</Y>
+					<X>690</X><Y>240</Y>
 					<Label><X>-5</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1820,7 +1822,7 @@ traceln(
 				<EmbeddedObject>
 					<Id>1794743925302</Id>
 					<Name><![CDATA[Gleis3]]></Name>
-					<X>560</X><Y>340</Y>
+					<X>690</X><Y>340</Y>
 					<Label><X>-5</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1918,7 +1920,7 @@ traceln(
 				<EmbeddedObject>
 					<Id>1794743928487</Id>
 					<Name><![CDATA[Gleis4]]></Name>
-					<X>560</X><Y>440</Y>
+					<X>690</X><Y>440</Y>
 					<Label><X>-5</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2015,8 +2017,8 @@ traceln(
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1794744009815</Id>
-					<Name><![CDATA[selectOutput5]]></Name>
-					<X>340</X><Y>340</Y>
+					<Name><![CDATA[Dispatcher]]></Name>
+					<X>470</X><Y>350</Y>
 					<Label><X>-40</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2122,7 +2124,7 @@ traceln(
 				<EmbeddedObject>
 					<Id>1794744498832</Id>
 					<Name><![CDATA[wait]]></Name>
-					<X>250</X><Y>340</Y>
+					<X>380</X><Y>340</Y>
 					<Label><X>0</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2228,7 +2230,7 @@ traceln(
 				<EmbeddedObject>
 					<Id>1794746717464</Id>
 					<Name><![CDATA[fromSouth]]></Name>
-					<X>-10</X><Y>390</Y>
+					<X>120</X><Y>390</Y>
 					<Label><X>-10</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2515,8 +2517,8 @@ recordScenarioTrain(agent);]]></Code>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1794772727390</Id>
-					<Name><![CDATA[sink]]></Name>
-					<X>800</X><Y>370</Y>
+					<Name><![CDATA[LeftHBF]]></Name>
+					<X>930</X><Y>370</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2647,8 +2649,8 @@ if (completed == 2 * trainsPerDirection) {
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1794773876913</Id>
-					<Name><![CDATA[sink1]]></Name>
-					<X>320</X><Y>530</Y>
+					<Name><![CDATA[troubleshooting]]></Name>
+					<X>410</X><Y>520</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2708,7 +2710,7 @@ if (completed == 2 * trainsPerDirection) {
 				<EmbeddedObject>
 					<Id>1794839086835</Id>
 					<Name><![CDATA[approachNorth]]></Name>
-					<X>95</X><Y>300</Y>
+					<X>225</X><Y>300</Y>
 					<Label><X>-5</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2804,7 +2806,7 @@ if (completed == 2 * trainsPerDirection) {
 				<EmbeddedObject>
 					<Id>1794839127946</Id>
 					<Name><![CDATA[approachSouth]]></Name>
-					<X>95</X><Y>380</Y>
+					<X>225</X><Y>380</Y>
 					<Label><X>-5</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3258,8 +3260,8 @@ if (completed == 2 * trainsPerDirection) {
 	<TimeAccuracy>1.0E-5</TimeAccuracy>
 	<Frame>
 		<Id>1794743773438</Id>
-		<Width>1540</Width>
-		<Height>620</Height>
+		<Width>1250</Width>
+		<Height>590</Height>
 	</Frame>
 	<Database>
 		<Id>1794743773437</Id>
