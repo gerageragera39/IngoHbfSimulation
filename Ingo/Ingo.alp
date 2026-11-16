@@ -131,7 +131,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["FIXED_DB"]]></Code>
+							<Code><![CDATA["GREEDY"]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -296,7 +296,7 @@
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["S001"]]></Code>
+							<Code><![CDATA["S001_RNG2"]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1179,37 +1179,41 @@ try {
 						<Type><![CDATA[String]]></Type>
 					</Parameter>
 					<Body><![CDATA[
-if (zeroDelayProbability < 0 ||
-    zeroDelayProbability > 1 ||
-    meanPositiveDelay <= 0 ||
-    maxIncomingDelay <= 0) {
+if (zeroDelayProbability < 0.0 ||
+    zeroDelayProbability > 1.0 ||
+    meanPositiveDelay <= 0.0 ||
+    maxIncomingDelay <= 0.0) {
 
     throw new IllegalArgumentException(
         "Invalid delay distribution parameters"
     );
 }
 
-// Создаём отдельный воспроизводимый seed
-// для каждого ID поезда.
-long trainSeed =
+// Generate a deterministic seed for each train
+long z =
     1000003L * (long) scenarioSeed +
     (long) trainId.hashCode();
 
-java.util.Random rng =
-    new java.util.Random(trainSeed);
+// SplitMix64 bit mixing
+z = (z ^ (z >>> 30)) * 0xbf58476d1ce4e5b9L;
+z = (z ^ (z >>> 27)) * 0x94d049bb133111ebL;
+z = z ^ (z >>> 31);
 
-// Вероятность отсутствия опоздания
+// Independent deterministic random stream
+java.util.Random rng = new java.util.Random(z);
+
+// Probability of zero incoming delay
 if (rng.nextDouble() < zeroDelayProbability) {
     return 0.0;
 }
 
-// Экспоненциальное распределение
+// Positive delay: exponential distribution
 double u = rng.nextDouble();
 
 double delay =
     -meanPositiveDelay * Math.log1p(-u);
 
-// Ограничиваем максимальную задержку
+// Upper limit for incoming delay
 return Math.min(delay, maxIncomingDelay);
 ]]></Body>
 				</Function>
@@ -3344,8 +3348,8 @@ if (completed == 2 * trainsPerDirection) {
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1794700800000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1794718800000]]></FinalDate>
-				<FinalTime><![CDATA[300.0]]></FinalTime>
+				<FinalDate><![CDATA[1794712800000]]></FinalDate>
+				<FinalTime><![CDATA[200.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>	
