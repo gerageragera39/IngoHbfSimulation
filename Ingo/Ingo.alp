@@ -123,7 +123,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774039166</Id>
 					<Name><![CDATA[policy]]></Name>
-					<X>60</X><Y>80</Y>
+					<X>50</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -138,7 +138,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774049373</Id>
 					<Name><![CDATA[occupied]]></Name>
-					<X>150</X><Y>80</Y>
+					<X>50</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -153,7 +153,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774074051</Id>
 					<Name><![CDATA[trainSeq]]></Name>
-					<X>270</X><Y>80</Y>
+					<X>190</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -168,7 +168,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774087547</Id>
 					<Name><![CDATA[northSeq]]></Name>
-					<X>370</X><Y>80</Y>
+					<X>190</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -183,7 +183,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774100772</Id>
 					<Name><![CDATA[southSeq]]></Name>
-					<X>480</X><Y>80</Y>
+					<X>190</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -198,7 +198,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774114861</Id>
 					<Name><![CDATA[completed]]></Name>
-					<X>600</X><Y>80</Y>
+					<X>340</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -213,13 +213,73 @@
 				<Variable Class="PlainVariable">
 					<Id>1794774124027</Id>
 					<Name><![CDATA[totalStationDelay]]></Name>
-					<X>340</X><Y>130</Y>
+					<X>340</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794835799327</Id>
+					<Name><![CDATA[resultRows]]></Name>
+					<X>300</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[java.util.ArrayList<String>]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new java.util.ArrayList<String>()]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794835843242</Id>
+					<Name><![CDATA[trainsPerDirection]]></Name>
+					<X>20</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[60]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794835866020</Id>
+					<Name><![CDATA[totalWaitingTime]]></Name>
+					<X>80</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794835885605</Id>
+					<Name><![CDATA[reassignmentCount]]></Name>
+					<X>490</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[0]]></Code>
 						</InitialValue>
@@ -638,7 +698,7 @@
 					<ReturnType><![CDATA[boolean]]></ReturnType>
 					<Id>1794772703414</Id>
 					<Name><![CDATA[canUse]]></Name>
-					<X>60</X><Y>40</Y>
+					<X>60</X><Y>650</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -670,7 +730,7 @@ return false;
 					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1794774146917</Id>
 					<Name><![CDATA[choosePlatform]]></Name>
-					<X>160</X><Y>40</Y>
+					<X>160</X><Y>650</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -724,7 +784,7 @@ throw new IllegalStateException(
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1794774228877</Id>
 					<Name><![CDATA[dispatchTrains]]></Name>
-					<X>320</X><Y>40</Y>
+					<X>320</X><Y>650</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -792,6 +852,153 @@ while (true) {
             "Could not release train " + selected.trainId
         );
     }
+}
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1794835926299</Id>
+					<Name><![CDATA[recordTrainResult]]></Name>
+					<X>480</X><Y>650</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[t]]></Name>
+						<Type><![CDATA[TrainRequest]]></Type>
+					</Parameter>
+					<Body><![CDATA[
+ // Проверяем корректность назначения
+if (!canUse(t, t.assignedPlatform)) {
+    throw new IllegalStateException(
+        "Invalid platform for train " + t.trainId
+    );
+}
+
+// Время ожидания до занятия платформы
+double waitingTime = Math.max(
+    0.0,
+    t.actualArrival - t.readyTime
+);
+
+// Было ли переназначение платформы
+int reassigned = (
+    t.assignedPlatform != t.plannedPlatform
+) ? 1 : 0;
+
+// Проверяем минимальную стоянку
+if (t.actualDeparture + 1e-8 <
+    t.actualArrival + t.minDwell) {
+    throw new IllegalStateException(
+        "Minimum dwell violated: " + t.trainId
+    );
+}
+
+// Экранируем текстовые значения для CSV
+String id = "\"" +
+    t.trainId.replace("\"", "\"\"") + "\"";
+
+String route = "\"" +
+    t.routeGroup.replace("\"", "\"\"") + "\"";
+
+// Формируем строку CSV
+String row = String.join(",",
+    policy,
+    id,
+    route,
+    String.valueOf(t.plannedPlatform),
+    String.valueOf(t.assignedPlatform),
+    String.valueOf(t.scheduledArrival),
+    String.valueOf(t.scheduledDeparture),
+    String.valueOf(t.incomingDelay),
+    String.valueOf(t.readyTime),
+    String.valueOf(t.actualArrival),
+    String.valueOf(t.actualDeparture),
+    String.valueOf(t.minDwell),
+    String.valueOf(waitingTime),
+    String.valueOf(t.stationDelay),
+    String.valueOf(reassigned)
+);
+
+// Сохраняем строку в памяти
+resultRows.add(row);
+
+// Обновляем общую статистику
+totalWaitingTime += waitingTime;
+reassignmentCount += reassigned;
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1794835966342</Id>
+					<Name><![CDATA[saveResultsCsv]]></Name>
+					<X>660</X><Y>650</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[
+try {
+
+    // Создаём папку results
+    java.nio.file.Path folder =
+        java.nio.file.Paths.get("results");
+
+    java.nio.file.Files.createDirectories(folder);
+
+    // Имя файла зависит от стратегии
+    String fileName =
+        "train_results_" + policy + ".csv";
+
+    java.nio.file.Path output =
+        folder.resolve(fileName);
+
+    // Заголовок CSV
+    String header = String.join(",",
+        "policy",
+        "train_id",
+        "route_group",
+        "planned_platform",
+        "assigned_platform",
+        "scheduled_arrival",
+        "scheduled_departure",
+        "incoming_delay",
+        "ready_time",
+        "platform_arrival",
+        "actual_departure",
+        "min_dwell",
+        "waiting_min",
+        "station_delay_min",
+        "reassigned"
+    );
+
+    java.util.ArrayList<String> lines =
+        new java.util.ArrayList<String>();
+
+    lines.add(header);
+    lines.addAll(resultRows);
+
+    // Записываем CSV в UTF-8
+    java.nio.file.Files.write(
+        output,
+        lines,
+        java.nio.charset.StandardCharsets.UTF_8
+    );
+
+    traceln(
+        "CSV SAVED | " +
+        output.toAbsolutePath() +
+        " | Rows: " + resultRows.size()
+    );
+
+} catch (java.io.IOException e) {
+
+    throw new RuntimeException(
+        "Failed to export train results", e
+    );
 }
 ]]></Body>
 				</Function>
@@ -882,7 +1089,7 @@ while (true) {
 						<Parameter>
 							<Name><![CDATA[maxArrivals]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[5]]></Code>
+								<Code><![CDATA[trainsPerDirection]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1764,7 +1971,7 @@ traceln(
 						<Parameter>
 							<Name><![CDATA[maxArrivals]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[5]]></Code>
+								<Code><![CDATA[trainsPerDirection]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1991,18 +2198,21 @@ traceln(
 agent.actualDeparture = time();
 
 // Самое раннее возможное отправление
-// при данном входном опоздании
 double earliestDeparture = Math.max(
     agent.scheduledDeparture,
     agent.readyTime + agent.minDwell
 );
 
-// Дополнительная задержка от станции
+// Вторичная задержка
 agent.stationDelay = Math.max(
     0.0,
     agent.actualDeparture - earliestDeparture
 );
 
+// Записываем результаты поезда
+recordTrainResult(agent);
+
+// Обновляем общие показатели
 completed++;
 totalStationDelay += agent.stationDelay;
 
@@ -2013,18 +2223,52 @@ traceln(
     " | Station delay: " + agent.stationDelay
 );
 
-// Освобождаем резервирование пути
+// Освобождаем платформу
 occupied[agent.assignedPlatform] = false;
 
-// Диспетчер ищет следующего поезда
+// Ищем следующего ожидающего поезда
 dispatchTrains();
 
-if (completed == 10) {
+// Сохраняем промежуточные результаты
+// каждые 20 завершённых поездов
+if (completed % 20 == 0 ||
+    completed == 2 * trainsPerDirection) {
+
+    saveResultsCsv();
+}
+
+// Итоговый отчёт
+if (completed == 2 * trainsPerDirection) {
+
     traceln("========== FINISHED ==========");
-    traceln("Completed trains: " + completed);
-    traceln("Total station delay: " + totalStationDelay);
-    traceln("Average station delay: " +
-            totalStationDelay / completed);
+
+    traceln(
+        "Completed trains: " + completed
+    );
+
+    traceln(
+        "Total station delay: " +
+        totalStationDelay
+    );
+
+    traceln(
+        "Average station delay: " +
+        totalStationDelay / completed
+    );
+
+    traceln(
+        "Average waiting time: " +
+        totalWaitingTime / completed
+    );
+
+    traceln(
+        "Platform reassignments: " +
+        reassignmentCount
+    );
+
+    traceln(
+        "================================"
+    );
 }
 ]]></Code>
 							</Value>
@@ -2080,6 +2324,14 @@ if (completed == 10) {
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[if (agent != null) {
+    throw new IllegalStateException(
+        "Invalid platform assignment: exit 5. Train: "
+        + agent.trainId
+    );
+}]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[destroyEntity]]></Name>
@@ -2561,8 +2813,8 @@ if (completed == 10) {
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1794700800000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1794704400000]]></FinalDate>
-				<FinalTime><![CDATA[60.0]]></FinalTime>
+				<FinalDate><![CDATA[1794718800000]]></FinalDate>
+				<FinalTime><![CDATA[300.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>	
