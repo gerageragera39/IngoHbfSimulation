@@ -3450,7 +3450,7 @@ if (completed == 2 * trainsPerDirection) {
 			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
 
 
-			<AllowParallelEvaluations>true</AllowParallelEvaluations>
+			<AllowParallelEvaluations>false</AllowParallelEvaluations>
 			<UseFreeformParameters>true</UseFreeformParameters>
 			<NumberOfRuns>8</NumberOfRuns>
 			<FreeformParamValue>	
@@ -3468,7 +3468,7 @@ if (completed == 2 * trainsPerDirection) {
 			<FreeformParamValue>	
 				<Id>1794841794458</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[String.format("S%03d_RNG2", 2 + index / 2)]]></Code>
+					<Code><![CDATA[String.format("S%03d", 2 + index / 2)]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<RangeVariationParamValue>	
