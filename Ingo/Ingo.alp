@@ -3452,7 +3452,7 @@ if (completed == 2 * trainsPerDirection) {
 
 			<AllowParallelEvaluations>false</AllowParallelEvaluations>
 			<UseFreeformParameters>true</UseFreeformParameters>
-			<NumberOfRuns>8</NumberOfRuns>
+			<NumberOfRuns>200</NumberOfRuns>
 			<FreeformParamValue>	
 				<Id>1794841749514</Id>
 				<Expression Class="CodeValue">
