@@ -1,0 +1,13 @@
+train_group,track,train,departure,direction_or_destination,evidence_revision,verification
+RB16_S,2,RB 59175,05:59,Muenchen,valid from 2025-12-14,rendered PDF page 4; from Nov 2 weekdays with exceptions
+RB16_S,3,RB 59141,05:34,Muenchen,valid from 2025-12-14,rendered PDF page 2; weekdays with exceptions
+RE1_S,2,RE 59071,07:07,Muenchen,valid from 2025-06-15,older indexed timetable text; Saturday
+RE1_S,3,RE 4001,06:12,Muenchen,valid from 2025-12-14,rendered PDF page 4; from Nov 2 weekdays
+RE1_S,5,RE 4699,07:08,Muenchen,valid from 2025-06-15,older indexed timetable text; weekdays; section D-G
+ICE_S,3,ICE 1081,05:25,Muenchen,valid from 2025-12-14,rendered PDF page 2; exceptions apply
+RB16_N,4,RB 59144,05:24,Nuernberg via Treuchtlingen,valid from 2025-12-14,rendered PDF page 2; weekdays
+RB16_N,5,RB 59144,05:24,Treuchtlingen,valid from 2025-12-14,rendered PDF page 2; Saturday
+RE1_N,4,RE 4006,08:52,Nuernberg,valid from 2025-06-15,older indexed timetable text; weekend
+RE1_N,5,RE 4004,08:01,Nuernberg,valid from 2025-06-15,older indexed timetable text
+ICE_N,4,ICE 822,05:26,Essen via Nuernberg,valid from 2025-12-14,rendered PDF page 2; Saturday with exceptions
+ICE_N,5,ICE 822,05:26,Essen via Nuernberg,valid from 2025-12-14,rendered PDF page 2; weekdays with exceptions
