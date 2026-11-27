@@ -20,6 +20,7 @@ from collections import defaultdict
 from pathlib import Path
 
 POLICIES = ("FIXED_DB", "GREEDY")
+PLATFORMS = (2, 3, 4, 5)
 FILENAME_RE = re.compile(r"^train_results_(FIXED_DB|GREEDY)_(.+)_seed(\d+)\.csv$")
 TOL = 1e-7
 
@@ -43,7 +44,13 @@ def require(condition, message):
 
 def load_csv(path):
     with path.open("r", encoding="utf-8-sig", newline="") as f:
-        rows = list(csv.DictReader(f))
+        reader = csv.DictReader(f, strict=True)
+        fields = reader.fieldnames or []
+        require(fields and all(fields) and len(fields) == len(set(fields)),
+                f"Missing or duplicate CSV headers: {path.name}")
+        rows = list(reader)
+        require(all(None not in row and None not in row.values() for row in rows),
+                f"Wrong number of CSV fields: {path.name}")
     require(bool(rows), f"Empty CSV: {path}")
     return rows
 
@@ -52,7 +59,7 @@ def indexed(rows, label):
     result = {}
     for r in rows:
         tid = r["train_id"]
-        require(tid and tid not in result, f"Missing/duplicate train_id={tid!r} in {label}")
+        require(tid and tid.strip() and tid not in result, f"Missing/duplicate train_id={tid!r} in {label}")
         result[tid] = r
     return result
 
@@ -64,48 +71,49 @@ def save_csv(path, rows, headers):
         writer.writerows(rows)
 
 
-def validate_passenger_transfer(t, prefix):
-    # Backward compatibility with old CSV files
-    if "passenger_transfer_min" not in t:
-        require(
-            not t["scenario_id"].startswith("P2_"),
-            f"{prefix}: missing transfer data",
-        )
-        return
+PASSENGER_FIELDS = {
+    "transfer_time_setting", "assignment_time", "passenger_transfer_min",
+    "passengers_ready_time", "passenger_induced_delay_min",
+}
 
+
+def transfer_configuration(row):
+    mode = row.get("transfer_mode", "UNIFORM")
+    cross = float(row["transfer_time_setting"])
+    require(mode in ("UNIFORM", "MATRIX"), "Invalid transfer mode")
+    require(mode != "MATRIX" or "same_island_transfer_setting" in row,
+            "Missing MATRIX same-island setting")
+    same = float(row.get("same_island_transfer_setting", 0.0))
+    require(all(math.isfinite(v) and v >= 0 for v in (cross, same)),
+            "Invalid transfer settings")
+    return mode, cross, same
+
+
+def assignment_category(planned, assigned):
+    if planned == assigned:
+        return "Unchanged"
+    if (planned - 2) // 2 == (assigned - 2) // 2:
+        return "Same island"
+    return "Cross island"
+
+
+def transfer_minutes(config, planned, assigned):
+    mode, cross, same = config
+    category = assignment_category(planned, assigned)
+    if category == "Unchanged":
+        return 0.0
+    return same if mode == "MATRIX" and category == "Same island" else cross
+
+
+def validate_passenger_transfer(t, prefix):
+    fields = PASSENGER_FIELDS | {"transfer_mode", "same_island_transfer_setting"}
+    if not fields.intersection(t):
+        require(not t["scenario_id"].startswith("P2_"), f"{prefix}: missing transfer data")
+        return
+    require(PASSENGER_FIELDS <= t.keys(), f"{prefix}: incomplete passenger fields")
     planned = int(t["planned_platform"])
     assigned = int(t["assigned_platform"])
-
-    mode = t.get("transfer_mode", "UNIFORM")
-
-    require(
-        mode in ("UNIFORM", "MATRIX"),
-        f"{prefix}: invalid transfer mode",
-    )
-
-    cross = float(t["transfer_time_setting"])
-    same = float(
-        t.get("same_island_transfer_setting", 0.0)
-    )
-
-    require(
-        math.isfinite(cross) and cross >= 0
-        and math.isfinite(same) and same >= 0,
-        f"{prefix}: invalid transfer setting",
-    )
-
-    if planned == assigned:
-        expected_transfer = 0.0
-
-    elif mode == "UNIFORM":
-        expected_transfer = cross
-
-    elif (planned - 2) // 2 == (assigned - 2) // 2:
-        expected_transfer = same
-
-    else:
-        expected_transfer = cross
-
+    expected_transfer = transfer_minutes(transfer_configuration(t), planned, assigned)
     actual_transfer = float(t["passenger_transfer_min"])
     assignment = float(t["assignment_time"])
     passengers_ready = float(t["passengers_ready_time"])
@@ -169,18 +177,24 @@ def validate_one(policy, rows_by_train, scenario_by_train, scenario_id, seed):
         require(t["policy"] == policy, f"{prefix}: wrong policy")
         require(t["scenario_id"] == scenario_id, f"{prefix}: wrong scenario ID")
         require(int(t["scenario_seed"]) == seed, f"{prefix}: wrong seed")
-        s = scenario_by_train[tid]
-        require(s["scenario_id"] == scenario_id, f"{prefix}: scenario CSV ID mismatch")
-        require(int(s["scenario_seed"]) == seed, f"{prefix}: scenario CSV seed mismatch")
-        for col in ("route_group", "planned_platform"):
-            require(t[col] == s[col], f"{prefix}: mismatch in {col}")
-        for col in ("scheduled_arrival", "scheduled_departure", "incoming_delay", "ready_time"):
-            require(close(t[col], s[col]), f"{prefix}: mismatch in {col}")
-
         planned, assigned = int(t["planned_platform"]), int(t["assigned_platform"])
-        allowed = {int(n) for n in s["allowed_platforms"].split("|") if n}
-        require(assigned in (2, 3, 4, 5) and assigned in allowed,
-                f"{prefix}: illegal assigned platform {assigned}")
+        require(planned in PLATFORMS, f"{prefix}: illegal planned platform {planned}")
+        require(assigned in PLATFORMS, f"{prefix}: illegal assigned platform {assigned}")
+        require(bool(t["route_group"].strip()), f"{prefix}: missing route group")
+        if scenario_by_train is not None:
+            s = scenario_by_train[tid]
+            require(s["scenario_id"] == scenario_id, f"{prefix}: scenario CSV ID mismatch")
+            require(int(s["scenario_seed"]) == seed, f"{prefix}: scenario CSV seed mismatch")
+            for col in ("route_group", "planned_platform"):
+                require(t[col] == s[col], f"{prefix}: mismatch in {col}")
+            for col in ("scheduled_arrival", "scheduled_departure", "incoming_delay", "ready_time"):
+                require(close(t[col], s[col]), f"{prefix}: mismatch in {col}")
+            if "min_dwell" in s:
+                require(close(t["min_dwell"], s["min_dwell"]), f"{prefix}: mismatch in min_dwell")
+            allowed = {int(n) for n in s["allowed_platforms"].split("|")}
+            require(allowed <= set(PLATFORMS) and planned in allowed,
+                    f"{prefix}: invalid input platform eligibility")
+            require(assigned in allowed, f"{prefix}: incompatible assigned platform {assigned}")
         if policy == "FIXED_DB":
             require(assigned == planned, f"{prefix}: FIXED_DB has reassignment")
         reassign = int(t["reassigned"])
@@ -195,7 +209,14 @@ def validate_one(policy, rows_by_train, scenario_by_train, scenario_id, seed):
         waiting = float(t["waiting_min"])
         secondary = float(t["station_delay_min"])
         scheduled_departure = float(t["scheduled_departure"])
-        require(incoming >= -TOL and min_dwell >= -TOL, f"{prefix}: negative input time")
+        times = (scheduled_arrival, scheduled_departure, ready, incoming,
+                 platform_arrival, departure, min_dwell, waiting, secondary)
+        require(all(math.isfinite(x) and x >= 0 for x in times),
+                f"{prefix}: invalid numerical time")
+        require(scheduled_departure >= scheduled_arrival - TOL,
+                f"{prefix}: scheduled departure before scheduled arrival")
+        require(departure >= scheduled_departure - TOL,
+                f"{prefix}: departure before scheduled departure")
         require(close(ready, scheduled_arrival + incoming), f"{prefix}: wrong ready_time")
         require(platform_arrival >= ready - TOL, f"{prefix}: on platform before ready")
         require(departure + TOL >= platform_arrival + min_dwell,
@@ -223,10 +244,29 @@ def confidence_interval(values):
         return mean, None, None
     std = statistics.stdev(values)
     df = n - 1
-    # For df > 30 use the first-order expansion of the t critical value.
-    critical = T_975[df] if df <= 30 else 1.959964 + 2.372 / df
+    # Cornish–Fisher expansion of the Student-t quantile for larger samples.
+    z = 1.959963984540054
+    critical = T_975[df] if df <= 30 else (
+        z + (z**3 + z) / (4 * df)
+        + (5 * z**5 + 16 * z**3 + 3 * z) / (96 * df**2)
+        + (3 * z**7 + 19 * z**5 + 17 * z**3 - 15 * z) / (384 * df**3)
+    )
     halfwidth = critical * std / math.sqrt(n)
     return mean, mean - halfwidth, mean + halfwidth
+
+
+def pair_configuration(runs):
+    configs = {
+        transfer_configuration(row) if "transfer_time_setting" in row else None
+        for rows in runs.values() for row in rows.values()
+    }
+    require(len(configs) == 1, "Inconsistent passenger model settings across the pair")
+    return configs.pop()
+
+
+def delay_reduction(fixed, greedy):
+    """Percentage reduction relative to FIXED_DB, undefined for zero baseline."""
+    return 100 * (fixed - greedy) / fixed if fixed else None
 
 
 def analyse_scenario(key, paths, scenario_dir, expected_trains):
@@ -236,30 +276,27 @@ def analyse_scenario(key, paths, scenario_dir, expected_trains):
     source_path = scenario_dir / f"delay_scenarios_{scenario_id}_seed{seed}.csv"
     require(source_path.exists(), f"Missing input scenario CSV: {source_path}")
     inputs = indexed(load_csv(source_path), str(source_path))
-    fixed = indexed(load_csv(paths["FIXED_DB"]), str(paths["FIXED_DB"]))
-    greedy = indexed(load_csv(paths["GREEDY"]), str(paths["GREEDY"]))
-    require(set(fixed) == set(greedy) == set(inputs),
-            f"Train IDs do not match across 3 CSV files for {scenario_id} seed{seed}")
+    runs = {policy: indexed(load_csv(path), str(path)) for policy, path in paths.items()}
+    return analyse_records(key, runs, inputs, expected_trains)
+
+
+def analyse_records(key, runs, inputs, expected_trains=None):
+    """Validate a loaded pair for both CLI and dashboard callers.
+
+    With no original inputs, validate the pair internally. Callers must identify
+    that weaker validation and keep such pairs out of experiment statistics.
+    """
+    scenario_id, seed = key
+    fixed, greedy = (runs[policy] for policy in POLICIES)
+    require(bool(fixed) and fixed.keys() == greedy.keys()
+            and (inputs is None or fixed.keys() == inputs.keys()),
+            f"Train IDs do not match across CSV files for {scenario_id} seed{seed}")
     if expected_trains is not None:
-        require(len(inputs) == expected_trains,
-                f"{scenario_id} seed{seed}: {len(inputs)} trains, expected {expected_trains}")
-    validate_one("FIXED_DB", fixed, inputs, scenario_id, seed)
-    validate_one("GREEDY", greedy, inputs, scenario_id, seed)
-    # Verify identical passenger model settings
-    if scenario_id.startswith("P2_"):
-        configurations = set()
-
-        for row in list(fixed.values()) + list(greedy.values()):
-            configurations.add((
-                row["transfer_mode"],
-                float(row["transfer_time_setting"]),
-                float(row["same_island_transfer_setting"]),
-            ))
-
-        require(
-            len(configurations) == 1,
-            f"{scenario_id}: inconsistent transfer settings",
-        )
+        require(len(fixed) == expected_trains,
+                f"{scenario_id} seed{seed}: {len(fixed)} trains, expected {expected_trains}")
+    for policy, rows in runs.items():
+        validate_one(policy, rows, inputs, scenario_id, seed)
+    pair_configuration(runs)
     for tid in fixed:
         for col in ("route_group", "planned_platform", "scheduled_arrival",
                     "scheduled_departure", "incoming_delay", "ready_time", "min_dwell"):
@@ -271,7 +308,8 @@ def analyse_scenario(key, paths, scenario_dir, expected_trains):
                         f"{scenario_id}: Fixed/Greedy differ for {tid}, {col}")
 
     pair_rows = []
-    for tid in sorted(inputs, key=lambda t: (t[0], int(t[1:]) if t[1:].isdigit() else t)):
+    for tid in sorted(fixed, key=lambda t: (t[0], not t[1:].isdecimal(),
+                                            int(t[1:]) if t[1:].isdecimal() else t)):
         a, b = fixed[tid], greedy[tid]
         delay_a, delay_b = float(a["station_delay_min"]), float(b["station_delay_min"])
         waiting_a, waiting_b = float(a["waiting_min"]), float(b["waiting_min"])
@@ -291,13 +329,13 @@ def analyse_scenario(key, paths, scenario_dir, expected_trains):
     total_b = sum(float(r["station_delay_min"]) for r in greedy.values())
     wait_a = sum(float(r["waiting_min"]) for r in fixed.values())
     wait_b = sum(float(r["waiting_min"]) for r in greedy.values())
-    n = len(inputs)
-    delays_in = [float(x["incoming_delay"]) for x in inputs.values()]
+    n = len(fixed)
+    delays_in = [float(x["incoming_delay"]) for x in (inputs if inputs is not None else fixed).values()]
     summary = {
         "scenario_id": scenario_id, "scenario_seed": seed, "trains": n,
         "fixed_total_delay_min": total_a, "greedy_total_delay_min": total_b,
         "delay_saved_min": total_a - total_b,
-        "delay_reduction_pct": 100 * (total_a - total_b) / total_a if total_a else "",
+        "delay_reduction_pct": delay_reduction(total_a, total_b) if total_a else "",
         "fixed_mean_delay_min": total_a / n, "greedy_mean_delay_min": total_b / n,
         "fixed_total_wait_min": wait_a, "greedy_total_wait_min": wait_b,
         "fixed_affected_trains": sum(float(x["station_delay_min"]) > TOL for x in fixed.values()),
@@ -401,7 +439,7 @@ def main():
     mean, lower, upper = confidence_interval(paired)
     fixed_sum = sum(s["fixed_total_delay_min"] for s in summaries)
     greedy_sum = sum(s["greedy_total_delay_min"] for s in summaries)
-    ratio = 100 * (fixed_sum - greedy_sum) / fixed_sum if fixed_sum else float('nan')
+    ratio = delay_reduction(fixed_sum, greedy_sum) if fixed_sum else float('nan')
     info = [
         ("number_of_scenarios", len(summaries)),
         ("number_of_paired_train_observations", len(pairs)),

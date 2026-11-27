@@ -11,20 +11,13 @@ from pathlib import Path
 
 import analyze_results as ar
 
-PLATFORMS = (2, 3, 4, 5)
+PLATFORMS = ar.PLATFORMS
 
 
 def configuration(rows):
-    configs = {
-        (r.get('transfer_mode', 'UNIFORM'), float(r['transfer_time_setting']),
-         float(r.get('same_island_transfer_setting', 0)))
-        for r in rows
-    }
+    configs = {ar.transfer_configuration(r) for r in rows}
     ar.require(len(configs) == 1, 'Mixed transfer settings within a pair')
-    config = next(iter(configs))
-    ar.require(all(math.isfinite(v) and v >= 0 for v in config[1:]),
-               'Invalid transfer settings')
-    return config
+    return configs.pop()
 
 
 def label(config):
@@ -34,10 +27,14 @@ def label(config):
 
 def metrics(rows, horizon):
     result = []
+    passenger_available = "passenger_induced_delay_min" in rows[0]
     counts = Counter((int(r['planned_platform']), int(r['assigned_platform']))
                      for r in rows)
+    by_platform = defaultdict(list)
+    for row in rows:
+        by_platform[int(row['assigned_platform'])].append(row)
     for p in PLATFORMS:
-        trains = [r for r in rows if int(r['assigned_platform']) == p]
+        trains = by_platform[p]
         intervals = [(float(r['platform_arrival']), float(r['actual_departure']))
                      for r in trains]
         ar.require(all(0 <= a <= d <= horizon + ar.TOL for a, d in intervals),
@@ -50,12 +47,40 @@ def metrics(rows, horizon):
         ar.require(busy <= horizon + ar.TOL, f'Gleis {p}: utilization exceeds 100%')
         result.append(dict(
             platform=p, train_count=len(trains), busy_min=busy,
-            utilization_pct=100 * busy / horizon,
-            mean_occupancy_min=busy / len(trains) if trains else '',
-            passenger_induced_delay_min=sum(float(r['passenger_induced_delay_min'])
-                                            for r in trains),
+            utilization_pct=100 * busy / horizon if horizon else None,
+            mean_occupancy_min=busy / len(trains) if trains else None,
+            passenger_induced_delay_min=(
+                sum(float(r['passenger_induced_delay_min']) for r in trains)
+                if passenger_available else None
+            ),
         ))
     return result, counts
+
+
+def observation_horizon(runs):
+    return max(float(row['actual_departure']) for rows in runs for row in rows)
+
+
+def run_metrics(rows, platforms, counts):
+    utilization = [p['utilization_pct'] for p in platforms]
+    available = utilization[0] is not None
+    categories = Counter()
+    for (planned, assigned), count in counts.items():
+        categories[ar.assignment_category(planned, assigned)] += count
+    passenger_delays = [p['passenger_induced_delay_min'] for p in platforms]
+    return dict(
+        train_count=len(rows),
+        last_departure_min=observation_horizon([rows]),
+        mean_utilization_pct=st.mean(utilization) if available else None,
+        utilization_range_pp=max(utilization) - min(utilization) if available else None,
+        utilization_sd_pp=st.pstdev(utilization) if available else None,
+        same_island_reassignments=categories['Same island'],
+        cross_island_reassignments=categories['Cross island'],
+        total_station_delay_min=sum(float(r['station_delay_min']) for r in rows),
+        passenger_induced_delay_min=(
+            sum(passenger_delays) if passenger_delays[0] is not None else None
+        ),
+    )
 
 
 def save(path, rows):
@@ -74,7 +99,7 @@ def charts(platform_summary, run_summary, transfer_summary, output):
             ax.bar([p + (i - .5) * .36 for p in PLATFORMS],
                    [r['mean_utilization_pct'] for r in rows], .36, label=policy)
         ax.set(xticks=PLATFORMS, xlabel='Gleis', ylabel='Mean utilization (%)',
-               ylim=(0, 100), title=f'Platform utilization — {config}')
+               ylim=(0, 100), title=f'Platform utilization â€” {config}')
         ax.legend()
         fig.tight_layout()
         fig.savefig(output / f'utilization_{config}.png', dpi=160)
@@ -92,7 +117,7 @@ def charts(platform_summary, run_summary, transfer_summary, output):
                         color='white' if matrix[i][j] < im.norm.vmax / 2 else 'black')
         ax.set(xticks=range(4), yticks=range(4), xticklabels=PLATFORMS,
                yticklabels=PLATFORMS, xlabel='Assigned Gleis', ylabel='Planned Gleis',
-               title=f'GREEDY assignments — {config}')
+               title=f'GREEDY assignments â€” {config}')
         fig.colorbar(im, ax=ax, label='Mean trains per scenario')
         fig.tight_layout()
         fig.savefig(output / f'assignments_{config}.png', dpi=160)
@@ -154,8 +179,7 @@ def main():
                'Different seed sets across configurations')
 
     # One common observation window for all selected runs; do not use 500-min stop time.
-    horizon = max(float(r['actual_departure']) for _, _, _, runs in pairs
-                  for rows in runs.values() for r in rows)
+    horizon = observation_horizon(rows for _, _, _, runs in pairs for rows in runs.values())
     ar.require(math.isfinite(horizon) and horizon > 0, 'Invalid observation horizon')
     platform_rows, run_rows, transfer_rows = [], [], []
     for scenario, seed, config, runs in pairs:
@@ -164,20 +188,7 @@ def main():
                         scenario_seed=seed, policy=policy, observation_min=horizon)
             platforms, counts = metrics(rows, horizon)
             platform_rows.extend(dict(base, **p) for p in platforms)
-            u = [p['utilization_pct'] for p in platforms]
-            same = sum(n for (p, q), n in counts.items()
-                       if p != q and (p - 2) // 2 == (q - 2) // 2)
-            cross = sum(n for (p, q), n in counts.items()
-                        if (p - 2) // 2 != (q - 2) // 2)
-            run_rows.append(dict(base, train_count=len(rows),
-                                 last_departure_min=max(float(r['actual_departure']) for r in rows),
-                                 mean_utilization_pct=st.mean(u),
-                                 utilization_range_pp=max(u) - min(u),
-                                 utilization_sd_pp=st.pstdev(u),
-                                 same_island_reassignments=same,
-                                 cross_island_reassignments=cross,
-                                 total_station_delay_min=sum(float(r['station_delay_min']) for r in rows),
-                                 passenger_induced_delay_min=sum(p['passenger_induced_delay_min'] for p in platforms)))
+            run_rows.append(dict(base, **run_metrics(rows, platforms, counts)))
             transfer_rows.extend(dict(base, planned_platform=p, assigned_platform=q,
                                       train_count=counts[p, q])
                                  for p in PLATFORMS for q in PLATFORMS)
@@ -217,7 +228,7 @@ def main():
         save(args.output / f'{name}.csv', data)
     if not args.no_plots:
         charts(platform_summary, run_rows, transfer_summary, args.output)
-    print(f'Validated {len(pairs)} paired scenarios; common observation: 0–{horizon:.2f} min')
+    print(f'Validated {len(pairs)} paired scenarios; common observation: 0â€“{horizon:.2f} min')
     for r in run_summary:
         print(f"{r['configuration']} {r['policy']}: "
               f"utilization={r['mean_utilization_pct']:.2f}%; "

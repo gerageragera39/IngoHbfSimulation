@@ -4,7 +4,7 @@
 
 A discrete-event simulation of platform occupancy and dispatching at **Ingolstadt Hauptbahnhof (Germany)**. The research question is whether dynamically assigning trains to compatible platforms can reduce **station-induced secondary delays**, compared with keeping planned platform assignments.
 
-The current working prototype uses **AnyLogic 8.9.10**, the **Process Modeling Library (PML)**, and Java functions within AnyLogic. **Python, Google OR-Tools, Monte Carlo analysis, and real timetable integration are planned but not yet implemented.**
+The prototype uses **AnyLogic 8.9.10**, the **Process Modeling Library (PML)**, and Java functions within AnyLogic. Python validates completed runs and analyzes paired Monte Carlo experiments. Real timetable integration and the OR-Tools optimizer are planned.
 
 ## 1. Research question and objectives
 
@@ -24,7 +24,7 @@ We model **Gleis 2, 3, 4 and 5**, not the entire railway network. The north/sout
 
 **Included:** two incoming train streams, central waiting area, platform eligibility and assignment, platform occupation with capacity one, dwell, release, and basic delay metrics.
 
-**Excluded for now:** track geometry, switches, signals, approach conflicts, passenger transfers, trains moving beyond the station, and real-time DB dispatch decisions. These simplifications must be considered when interpreting results.
+The current passenger model represents walking time through transfer parameters. Track geometry, switches, signals, approach conflicts, individual passenger agents, trains moving beyond the station, and real-time DB dispatch decisions are outside the modeled scope.
 
 **Important:** the compatibility matrix is a **model assumption**, not a verified complete map of physically feasible station routes. For future real-timetable experiments, all trains occupying Gleis 2–5 must be accounted for, including trains not eligible for reassignment.
 
@@ -129,7 +129,7 @@ stationDelay_i = max(0, actualDeparture_i - earliestDeparture_i)
 
 This avoids counting unavoidable incoming lateness as delay caused by the station itself.
 
-**Currently logged:** per-train platform, platform entry time, departure time, secondary delay, completed-train count, total delay, average delay. Logs currently go to the AnyLogic console; CSV result export is planned.
+Completed experiments provide per-train CSV exports with platform, timing, secondary delay, and passenger transfer fields where supported by the export schema.
 
 **Planned metrics:** number/share of affected trains, maximum delay, late-departure share, utilization, platform reassignment count, throughput, recovery time, variability and confidence intervals across scenarios.
 
@@ -145,11 +145,12 @@ This avoids counting unavoidable incoming lateness as delay caused by the statio
 | GREEDY | **Implemented** | Online assignment to free eligible platforms |
 | Console logging / basic delay KPIs | **Implemented** | Per-train events and aggregate summary |
 | Verified real DB timetable / `trains.csv` | **Not implemented** | Synthetic arrivals used now |
-| Random incoming delays with reproducible seeds | **Not implemented** | Current incoming delays are zero |
-| Per-train CSV output | **Not implemented** | Console only |
+| Random incoming delays with reproducible seeds | **Implemented** | Synthetic input scenarios |
+| Per-train CSV output | **Implemented** | AnyLogic exports in `Ingo/results/` |
 | Python + OR-Tools optimizer | **Not implemented** | Planned |
-| Monte Carlo statistical experiments | **Not implemented** | Planned |
-| Automated testing / CI | **Not implemented** | Manual test runs so far |
+| Monte Carlo statistical experiments | **Implemented** | Paired FIXED_DB and GREEDY batches |
+| Simulation analytics dashboard | **Implemented** | Local Streamlit app backed by validated CSVs |
+| Dashboard tests | **Implemented** | Synthetic fixtures, committed-data regressions, and Streamlit AppTest |
 
 ### First manual comparison: 10 synthetic trains
 
@@ -186,18 +187,32 @@ The current test setup creates **5 trains per Source**, with a **2-minute intera
 
 The relative order of simultaneous events may depend on AnyLogic's event ordering; future experiments must freeze each train's complete input record and scenario identifier across policies.
 
+### Launch the analytics dashboard
+
+Run these commands from the repository root.
+
+```bash
+python -m pip install -r analysis/requirements_dashboard.txt
+python -m streamlit run analysis/station_dashboard.py
+```
+
+**Ingolstadt Hbf — Dispatching Analytics** analyzes completed AnyLogic CSVs across five sections. Overview, Platform Utilization, Passenger Transfer, and Statistical Analysis compare the selected Monte Carlo configuration. Train Data Explorer filters individual results and compares the same train under both dispatchers. The dashboard includes CSV exports, paired confidence intervals, and an occupancy Gantt chart built from actual arrival and departure times.
+
+Run the automated tests with `python -m unittest discover -s tests -v`. See the [Russian dashboard guide](analysis/DASHBOARD_README_RU.md) for validation, filtering, and interpretation.
+
 ## 9. Repository layout
 
 ```text
 IngoHbfSimulation/
 ├── Ingo/
 │   ├── Ingo.alp             # Current AnyLogic model
-│   └── Ingo.original.alp    # Earlier project backup
+│   ├── Ingo.original.alp    # Earlier project backup
+│   └── results/             # Completed simulation CSV exports
+├── analysis/                # CLI analysis, Streamlit dashboard, reference outputs
+├── tests/                   # Dashboard tests
 ├── route_catalog.csv        # Route groups and permitted platforms
 └── README.md                # This documentation
 ```
-
-**Planned files, not yet in the repository:** `trains.csv`, `platform_compatibility.csv`, `delay_scenarios.csv`, `scenario_generator.py`, `optimizer.py`, `run_experiments.py`, and experiment output tables/plots.
 
 ## 10. Roadmap
 
@@ -210,7 +225,7 @@ IngoHbfSimulation/
 7. **Perform sensitivity analysis.** Vary mean incoming lateness, zero-delay probability, large disturbances, correlated delays, alternative-platform eligibility and traffic intensity.
 8. **Deliver reproducible results.** Document assumptions, configurations, seeds, input data, statistics, and how a teammate can reproduce each experiment.
 
-A virtual real-time visualization may be considered later, but is outside the current scope.
+A separate 3D station visualization is planned in AnyLogic.
 
 ## 11. Team conventions
 
