@@ -1,0 +1,270 @@
+{
+  "baseline_date": "2026-11-24",
+  "window_start": "2026-11-23T23:00:00+00:00",
+  "window_end_exclusive": "2026-11-24T23:00:00+00:00",
+  "timezone": "Europe/Berlin",
+  "length_minutes": 1440.0,
+  "modeled_trains": 116,
+  "modeled_cancelled_scheduled": 10,
+  "baseline_by_category": {
+    "ICE": 39,
+    "RE": 20,
+    "RB": 57
+  },
+  "baseline_by_route": {
+    "ICE_S": 19,
+    "RE1_S": 10,
+    "RB16_N": 16,
+    "RB17_NORD_REG": 18,
+    "ICE_N": 19,
+    "RB16_S": 18,
+    "RB17_REG_NORD": 4,
+    "RE1_N": 10,
+    "AMBIGUOUS": 1,
+    "RB15_DONAU_NORD": 1
+  },
+  "terminal_services": 132,
+  "terminal_services_by_kind": {
+    "terminating": 65,
+    "originating": 67
+  },
+  "terminal_services_on_modeled_platforms": 37,
+  "excluded_other": 26,
+  "baseline_review_rows": 1,
+  "unresolved_outside_timetable": 0,
+  "initial_occupancy_rows": 0,
+  "initial_trains_in_occupation": 0,
+  "departures_after_end": 0,
+  "planned_platform_exceptions": 1,
+  "dwell": {
+    "count": 116,
+    "min": 1.0,
+    "mean": 3.328,
+    "median": 2.0,
+    "max": 16.0,
+    "zero": 0,
+    "below_legacy_three_minutes": 84
+  },
+  "minimum_dwell_exceeds_schedule": 0,
+  "negative_dwell_review_count": 0,
+  "provisional_minimum_dwell_config": {
+    "default_through_minutes": 1,
+    "categories": {},
+    "reviewed": false,
+    "legacy_synthetic_minutes": 3,
+    "basis": "Provisional sensitivity baseline. On 2026-11-24, 93 of 138 through calls have scheduled dwell below three minutes, including 31 calls scheduled for one minute. Minimum operational dwell has not been measured. Terminal occupation is unknown and is excluded from this rule."
+  },
+  "scheduled_through_overlap_pairs": 0,
+  "scheduled_busy_minutes_by_platform": {
+    "2": 155.0,
+    "3": 59.0,
+    "4": 93.0,
+    "5": 79.0
+  },
+  "dynamic_reassignment": {
+    "conservative_eligible": 115,
+    "expanded_eligible": 115,
+    "expanded_increases_options": 10,
+    "conservative_pct": 99.13793103448276,
+    "expanded_pct": 99.13793103448276
+  },
+  "gtfs_review_counts": {
+    "exact_agree": 128,
+    "exact_platform_not_comparable": 9,
+    "documented_number_discrepancy_schedule_agrees": 1
+  },
+  "gtfs_unmatched_or_disagree_known_modeled_platform": 0,
+  "first_day": "2026-10-30",
+  "last_day": "2026-11-26",
+  "coverage": {
+    "expected_days": 28,
+    "validated_days": 28,
+    "request_receipts": 2016,
+    "split_windows": 0,
+    "parent_window_entries_excluded": 0,
+    "raw_event_snapshots": 17121,
+    "valid_event_snapshots": 17121,
+    "deduplicated_events": 11061,
+    "deduplicated_events_in_days": 10904,
+    "duplicate_snapshots": 6060,
+    "material_conflict_keys": 0,
+    "acquisition_issue_counts": {}
+  },
+  "infrastructure_research": "data/timetable/research/platform_compatibility_research.md",
+  "construction_period": {
+    "start": "2026-10-30",
+    "end_inclusive": "2026-12-12",
+    "limitation": "Nürnberg–Ingolstadt SFS closure, 2026-10-30 through 2026-12-12. Evidence applies to the recorded closure-period station movements. Published itinerary and reported platform carry no official routing authorization."
+  },
+  "station_eva": "8000183",
+  "station": "Ingolstadt Hbf",
+  "source_provenance": {
+    "route_config": {
+      "file": "openboards_history.json",
+      "sha256": "ee3c9501243c8c4039e2903b64352255f3432d768bbf2c5156a2ac7d450e54a5"
+    },
+    "dwell_config": {
+      "file": "minimum_dwell.json",
+      "sha256": "a37d7f9185415d4fafd6e6ddb2f70646016d1cd5d336d850ee59690e9abeb114"
+    },
+    "supplementary_gtfs_extraction": {
+      "file": "normalized_timetable.csv",
+      "sha256": "da435599403b3ea56a0e25ed48335c0ac4b007d2ec81827ae206094b8f38c967"
+    },
+    "legacy_routes": {
+      "file": "route_catalog.csv",
+      "sha256": "78c0d8aba00e47fe7f997ce03d2161e11d7b53611a74adc9de4bc2d7293dad94"
+    },
+    "infrastructure_research": {
+      "file": "platform_compatibility_research.md",
+      "sha256": "16c6f836867eb8d3846c9c6ed687283f92b48b2582c20b92801f3e9ae5969579"
+    }
+  },
+  "raw_platform_fields": [
+    "ifopt",
+    "name"
+  ],
+  "modeled_platforms": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "min_repeat_days": 2,
+  "min_repeat_train_numbers": 2,
+  "valid_scheduled_through_calls": 3816,
+  "cancelled_valid_scheduled_through_calls": 146,
+  "unmapped_valid_scheduled_through_calls": 2,
+  "strong_actual_platform_observations": 3686,
+  "weaker_actual_platform_observations": 5,
+  "reassignments": {
+    "route_group": "ALL",
+    "eligible_count": 3686,
+    "reassignment_count": 403,
+    "reassignment_pct": 10.933260987520347,
+    "distinct_eligible_days": 28,
+    "distinct_eligible_train_numbers": 247,
+    "distinct_reassignment_days": 28,
+    "distinct_reassignment_train_numbers": 112
+  },
+  "reassignments_into_scope_from_other_platforms": 76,
+  "linked_extra_aliases_historical": 62,
+  "historical_delay_summary": {
+    "scope": "ALL",
+    "count": 5116,
+    "early": 604,
+    "on_time": 11,
+    "positive": 4501,
+    "mean_min": 7.3923149596038575,
+    "median_min": 3.6,
+    "sample_stddev_min": 13.384255564519345,
+    "min_min": -27.3,
+    "p05_min": -1.55,
+    "p25_min": 1.1125,
+    "p75_min": 8.404166666666667,
+    "p90_min": 18.891666666666666,
+    "p95_min": 28.6125,
+    "p99_min": 58.51083333333333,
+    "max_min": 248.63333333333333
+  },
+  "legacy_platforms": {
+    "RB16_S": [
+      2,
+      3
+    ],
+    "RE1_S": [
+      2,
+      3,
+      5
+    ],
+    "ICE_S": [
+      3
+    ],
+    "RB16_N": [
+      4,
+      5
+    ],
+    "RE1_N": [
+      4,
+      5
+    ],
+    "ICE_N": [
+      4,
+      5
+    ]
+  },
+  "research_reference_platforms": {
+    "ICE_S": [
+      2,
+      3
+    ],
+    "ICE_N": [
+      4
+    ],
+    "RE1_S": [
+      3
+    ],
+    "RE1_N": [
+      4
+    ],
+    "RB16_S": [
+      2,
+      3
+    ],
+    "RB16_N": [
+      4,
+      5
+    ],
+    "RB15_DONAU_NORD": [
+      3,
+      4
+    ],
+    "RB15_NORD_DONAU": [],
+    "RB17_REG_NORD": [
+      2,
+      5
+    ],
+    "RB17_NORD_REG": [
+      5
+    ]
+  },
+  "readiness": "Ready for a controlled AnyLogic timetable import",
+  "readiness_detail": "Use the conservative timetable and its fixed-only exceptions for the through-only closure-period cohort. Carry scheduled conflicts into the dispatch queue and account for the day boundary. A station-wide or normal-SFS experiment needs terminal occupation and routing evidence. The dwell and expanded platform assumptions remain subject to sensitivity analysis.",
+  "output_csv_sha256": {
+    "compatibility/observed_platform_matrix.csv": "c6aa8de936438b2a6e48ee45b599226154138a71b358a9bf8e251537d2e10b3f",
+    "compatibility/observed_platform_matrix_gleis_2_5.csv": "48053840a17fae5a5f4fbbb804aeeacfe9399b848aa16289e73af9c5f455d210",
+    "compatibility/observed_platform_usage_by_day.csv": "d07160cf94f34e98b758eedd939b908e8c6766d4df7126d8147cbcb1e90b79ce",
+    "compatibility/platform_compatibility_conservative.csv": "7bb42ccbfa4d0117b06bdcdc1becdd8773522d212f7fce39941bb18a12ea7431",
+    "compatibility/platform_compatibility_evidence.csv": "ba416e719fb6222cf6dcaefaf9f7d56390780aef39304cc0d97214e55d27acd4",
+    "compatibility/platform_compatibility_expanded.csv": "337de06209a9ebf10702589f86a9159f12a8f6bbd233373131aac1afcb71d6e0",
+    "compatibility/platform_evidence_records.csv": "4e6efd712550ac2b86025524d47c70acb2b6bb6b06c86be8ccd1d42dcedd8ea5",
+    "compatibility/platform_reassignments.csv": "b38c414b6bf47d3c60aa68757ea3d31e1b6c791faee9fa3dd56e3d242f3f7b4a",
+    "compatibility/reassignment_matrix.csv": "e312424d03aafe3c12561a265c3077ad528e3b5a366d52a57faf7bcd36c40259",
+    "compatibility/reassignment_summary.csv": "302e4e9de4f7693c8a9c0268454482da28cb6ddd1ca98c9a97ef5c3072473c23",
+    "compatibility/scheduled_platform_matrix.csv": "ccccc9620a781aa933114f8ff0b9ca763243949a0b82303440d1514b544312e2",
+    "compatibility/scheduled_platform_matrix_gleis_2_5.csv": "343b6cf4cba2b223d9d1e539d532cef4969ba9aff4e8076449543816f72294ea",
+    "compatibility/scheduled_platform_usage_by_day.csv": "aadcb2311f38b4413b3c0ff1100d76c040ccceb0339049c8784bdeb6a32b4318",
+    "compatibility/scheduled_route_summary.csv": "bdfe787658475a9c78094b0f603d864b477000c669c2d6b2b3834437a22938d7",
+    "delays/delay_by_category.csv": "e82e8449a0415190a7388bb5366e7901930d8a4813a713440ffd35d92dfbe0b3",
+    "delays/delay_by_day.csv": "2093b571939e2e538c34a749d212c8eb5be853debd423e68aef2d803796d364d",
+    "delays/delay_by_hour.csv": "9dfac76f9b9b15f6fdd6491501e1a188c85a98b89f4aa209100fb53579d82ef1",
+    "delays/delay_by_route_group.csv": "7df6e4779589460e95ca52d3eaed148f4f3ac48f3802907af8c8d6f0487cb2d4",
+    "delays/delay_summary.csv": "7744015b9f2b12145fd2a3e31ed169849cef94d5a11c5c6a1cdd0a3f52573c24",
+    "delays/historical_arrival_delays.csv": "0f5ed6206190e1cb5319128f697ac7ee98676611edf4f17e9239592f1e370ffd",
+    "timetable/duplicate_service_review.csv": "d476547c43669347fd840dbb8f83ba8d9eb5bcc7c3dda79564e3f30225cda99d",
+    "timetable/excluded_services.csv": "5f35ccc18f80b4d89013318c487f7ba52e3141d8da22159b033bf8a663cf3de3",
+    "timetable/gtfs_baseline_review.csv": "9cb059ad7681e38b6d3c7264da094d498d012226613df2e9657691293198bd0b",
+    "timetable/initial_occupancy.csv": "1bfcbf53d1e3fd002f473f0fd8c7bab1f339e13acf7919be411647fd66147d83",
+    "timetable/scheduled_occupancy_conflicts.csv": "ebaddfc80bbc6e2dc89fdcea6ac7fc65586a7518ebd2a95bdd2b350131613f70",
+    "timetable/terminal_services.csv": "50d89d4922fee1977cd95ce4be2a8615a8dafa933db16541d212dff9d0dbf406",
+    "timetable/timetable.csv": "396d5e127d3bb087dd9bcc3645e21254976a5c3608480e163054cd78bdd459ec",
+    "timetable/unresolved_services.csv": "4dc353890402e1d1b2a564d2b56958f526e3933e4b239356943fbd505e8b3b3a",
+    "validation/acquisition_and_event_issues.csv": "997ee2c4a56433922669357c3ed199394d03bcf2f7fd9eb3ded10fd6612d884c",
+    "validation/conflicting_snapshots.csv": "77c4eff55a724f48770a49968e6691d690bb1e37a10049a9230ce98351e308e1",
+    "validation/dataset_coverage.csv": "755b622f2ed883059c42f60b151f0446e5baa89b8948f53d74a92ed16035c2f5",
+    "validation/historical_linked_journey_review.csv": "d04910e9bccdae99eb7d3082e349f2ed3c262807957253327f5c50c70b71886b",
+    "validation/historical_terminal_services.csv": "e3f13d5ef6a343d4e019abf9e6f2e949274a2c759a7c41e1276d0ec4397f2a76",
+    "validation/route_service_review.csv": "a629805fd3afcd3b5505f82dd8103d31adb75733332a78a6f1f53059a681e35c",
+    "validation/station_call_inventory.csv": "f074dd273ea191f620e475ea33f7a81b9087f945825428e29583c00cd3969dd6"
+  }
+}

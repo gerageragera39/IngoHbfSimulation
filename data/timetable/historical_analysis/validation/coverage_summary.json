@@ -1,0 +1,14 @@
+{
+  "expected_days": 28,
+  "validated_days": 28,
+  "request_receipts": 2016,
+  "split_windows": 0,
+  "parent_window_entries_excluded": 0,
+  "raw_event_snapshots": 17121,
+  "valid_event_snapshots": 17121,
+  "deduplicated_events": 11061,
+  "deduplicated_events_in_days": 10904,
+  "duplicate_snapshots": 6060,
+  "material_conflict_keys": 0,
+  "acquisition_issue_counts": {}
+}

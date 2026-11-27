@@ -1,0 +1,462 @@
+{
+  "configs": {
+    "minimum_dwell": {
+      "file": "minimum_dwell.json",
+      "sha256": "a37d7f9185415d4fafd6e6ddb2f70646016d1cd5d336d850ee59690e9abeb114"
+    },
+    "routes": {
+      "file": "routes.json",
+      "sha256": "5f664e02f313ea3dc60be878998265c3b375410abfe0d31e320cddf98796da6d"
+    }
+  },
+  "counts": {
+    "by_blocking_reason": {
+      "platform_conflict": 12,
+      "platform_missing": 66,
+      "terminal_occupation_unknown": 134
+    },
+    "by_boundary_status": {
+      "unknown_interval": 134,
+      "within_window": 138
+    },
+    "by_category": {
+      "ICE": 39,
+      "RB": 197,
+      "RE": 36
+    },
+    "by_line": {
+      "ICE 25": 3,
+      "ICE 29": 32,
+      "ICE 41": 4,
+      "RB13": 40,
+      "RB14": 4,
+      "RB15": 50,
+      "RB16": 51,
+      "RB17": 52,
+      "RE1": 36
+    },
+    "by_platform": {
+      "1": 23,
+      "2": 26,
+      "3": 34,
+      "4": 29,
+      "5": 37,
+      "6": 25,
+      "7": 20,
+      "Unknown": 78
+    },
+    "by_platform_status": {
+      "conflict": 12,
+      "matched_db_poster": 194,
+      "unknown": 66
+    },
+    "by_review_flag": {
+      "compatibility_review": 126,
+      "provisional_minimum_dwell": 138,
+      "route_group_unclassified": 79,
+      "train_number_unavailable": 117,
+      "zero_scheduled_dwell": 134
+    },
+    "by_route_group": {
+      "ICE_N": 19,
+      "ICE_S": 20,
+      "RB13_DASING": 20,
+      "RB14_EICHSTAETT": 2,
+      "RB15_INGOLSTADT_NORD": 3,
+      "RB15_WEST": 25,
+      "RB16_N": 22,
+      "RB16_S": 20,
+      "RB17_INGOLSTADT_NORD": 17,
+      "RB17_REGENSBURG": 25,
+      "RE1_N": 10,
+      "RE1_S": 10,
+      "UNCLASSIFIED": 79
+    },
+    "by_stop_kind": {
+      "originating": 68,
+      "terminating": 66,
+      "through": 138
+    },
+    "excluded_trains": 68,
+    "fixed_only_modeled": 126,
+    "hourly_main_day_stops": {
+      "00": 10,
+      "01": 2,
+      "02": 0,
+      "03": 0,
+      "04": 7,
+      "05": 12,
+      "06": 17,
+      "07": 16,
+      "08": 14,
+      "09": 13,
+      "10": 12,
+      "11": 12,
+      "12": 12,
+      "13": 14,
+      "14": 13,
+      "15": 12,
+      "16": 14,
+      "17": 18,
+      "18": 16,
+      "19": 13,
+      "20": 13,
+      "21": 11,
+      "22": 11,
+      "23": 10
+    },
+    "initial_occupancy": 0,
+    "initial_occupancy_all_platforms": 0,
+    "main_day_stops": 272,
+    "modeled_occupancy_conflicts": 0,
+    "modeled_platforms": 126,
+    "next_service_date": 0,
+    "nonpassenger_exclusions": 0,
+    "other_platforms": 68,
+    "peak_local_hours": [
+      "17:00"
+    ],
+    "platform_conflicts": 12,
+    "platform_coverage_pct": 71.32,
+    "platform_resolved": 194,
+    "previous_service_date": 8,
+    "provisional_main_day": 107,
+    "ready_main_day": 0,
+    "scheduled_dwell_all_calls_min": {
+      "below_legacy_three_minutes": 227,
+      "count": 272,
+      "max": 20.0,
+      "mean": 2.059,
+      "median": 1.0,
+      "min": 0.0,
+      "zero": 134
+    },
+    "scheduled_dwell_through_min": {
+      "below_legacy_three_minutes": 93,
+      "count": 138,
+      "max": 20.0,
+      "mean": 4.058,
+      "median": 2.0,
+      "min": 1.0,
+      "zero": 0
+    },
+    "scheduled_occupancy_conflicts": 0,
+    "scheduled_occupied_minutes": {
+      "1": 23.0,
+      "2": 155.0,
+      "3": 59.0,
+      "4": 82.0,
+      "5": 79.0,
+      "6": 68.0,
+      "7": 83.0
+    },
+    "station_stops": 272,
+    "timetable_rows": 107,
+    "unclassified_routes": 79,
+    "unknown_occupancy": 134,
+    "unknown_platforms": 78,
+    "unresolved_records": 143
+  },
+  "date_selection": "Earliest usable Tuesday–Thursday in shared GTFS coverage, with Monday or Friday as fallback. Bavarian holidays are skipped.",
+  "duplicate_findings": {},
+  "errors": [],
+  "feeds": {
+    "fv": {
+      "archive_members": [
+        "agency.txt",
+        "attributions.txt",
+        "calendar.txt",
+        "calendar_dates.txt",
+        "feed_info.txt",
+        "routes.txt",
+        "stop_times.txt",
+        "stops.txt",
+        "trips.txt"
+      ],
+      "attributions": [
+        {
+          "attribution_email": "",
+          "attribution_id": "1",
+          "attribution_url": "https://www.delfi.de",
+          "is_producer": "1",
+          "organization_name": "DELFI e.V"
+        },
+        {
+          "attribution_email": "info@gtfs.de",
+          "attribution_id": "2",
+          "attribution_url": "https://wwww.gtfs.de",
+          "is_producer": "1",
+          "organization_name": "GTFS.de"
+        },
+        {
+          "attribution_email": "",
+          "attribution_id": "3",
+          "attribution_url": "https://openstreetmap.org",
+          "is_producer": "",
+          "organization_name": "OpenStreetMap contributors"
+        }
+      ],
+      "bytes": 488450,
+      "documentation_url": "https://www.gtfs.de/de/feeds/de_fv/",
+      "downloaded_at_utc": "2026-11-27T18:06:19.758776+00:00",
+      "exact_duplicate_stop_times": 0,
+      "excluded_nonpassenger_calls": 0,
+      "feed_info": {
+        "feed_contact_email": "info@gtfs.de",
+        "feed_contact_url": "https://gtfs.de",
+        "feed_lang": "de",
+        "feed_publisher_name": "gtfs.de - GTFS für Deutschland, Daten bereitgestellt von DELFI e.V.",
+        "feed_publisher_url": "http://gtfs.de",
+        "feed_version": "latest-fv-free"
+      },
+      "file": "fernverkehr.zip",
+      "http_last_modified": "Sat, 21 Nov 2026 09:42:12 GMT",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "passenger_calls_before_deduplication": 39,
+      "resolved_url": "https://download.gtfs.de/germany/fv_free/latest.zip",
+      "service_calendar_rules": {
+        "calendar:tuesday": 35,
+        "calendar_dates:add": 4
+      },
+      "service_dates_examined_from": "2026-11-23",
+      "service_dates_examined_through": "2026-11-25",
+      "sha256": "0fe1458a7a63c4167c708add97e53fe03d1b94c059f268e4969d6dca3200d85d",
+      "station_root_ids": [
+        "nuf"
+      ],
+      "station_stop_ids": [
+        "4cbe",
+        "nuf"
+      ],
+      "station_stops": [
+        {
+          "location_type": "",
+          "parent_station": "nuf",
+          "platform_code": "",
+          "stop_id": "4cbe",
+          "stop_lat": "48.74454",
+          "stop_lon": "11.437337",
+          "stop_name": "Ingolstadt Hbf"
+        },
+        {
+          "location_type": "1",
+          "parent_station": "",
+          "platform_code": "",
+          "stop_id": "nuf",
+          "stop_lat": "48.74454",
+          "stop_lon": "11.437341",
+          "stop_name": "Ingolstadt Hbf"
+        }
+      ],
+      "station_template_count": 270,
+      "url": "https://download.gtfs.de/germany/fv_free/latest.zip",
+      "valid_from": "2026-11-21",
+      "valid_through": "2026-12-21"
+    },
+    "rv": {
+      "archive_members": [
+        "agency.txt",
+        "attributions.txt",
+        "calendar.txt",
+        "calendar_dates.txt",
+        "feed_info.txt",
+        "routes.txt",
+        "stop_times.txt",
+        "stops.txt",
+        "trips.txt"
+      ],
+      "attributions": [
+        {
+          "attribution_email": "",
+          "attribution_id": "1",
+          "attribution_url": "https://www.delfi.de",
+          "is_producer": "1",
+          "organization_name": "DELFI e.V"
+        },
+        {
+          "attribution_email": "info@gtfs.de",
+          "attribution_id": "2",
+          "attribution_url": "https://wwww.gtfs.de",
+          "is_producer": "1",
+          "organization_name": "GTFS.de"
+        },
+        {
+          "attribution_email": "",
+          "attribution_id": "3",
+          "attribution_url": "https://openstreetmap.org",
+          "is_producer": "",
+          "organization_name": "OpenStreetMap contributors"
+        }
+      ],
+      "bytes": 14606328,
+      "documentation_url": "https://www.gtfs.de/de/feeds/de_rv/",
+      "downloaded_at_utc": "2026-11-27T18:06:22.304905+00:00",
+      "exact_duplicate_stop_times": 0,
+      "excluded_nonpassenger_calls": 0,
+      "feed_info": {
+        "feed_contact_email": "info@gtfs.de",
+        "feed_contact_url": "https://gtfs.de",
+        "feed_lang": "de",
+        "feed_publisher_name": "gtfs.de - GTFS für Deutschland, Daten bereitgestellt von DELFI e.V.",
+        "feed_publisher_url": "http://gtfs.de",
+        "feed_version": "latest-rv-free"
+      },
+      "file": "regionalverkehr.zip",
+      "http_last_modified": "Sat, 21 Nov 2026 09:42:35 GMT",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "passenger_calls_before_deduplication": 233,
+      "resolved_url": "https://download.gtfs.de/germany/rv_free/latest.zip",
+      "service_calendar_rules": {
+        "calendar:monday": 5,
+        "calendar:tuesday": 228
+      },
+      "service_dates_examined_from": "2026-11-23",
+      "service_dates_examined_through": "2026-11-25",
+      "sha256": "246f9224417c3f7ddba15329162b3a954325b805c9d5c4b7830c60d1e9ccee26",
+      "station_root_ids": [
+        "nuf"
+      ],
+      "station_stop_ids": [
+        "4cbe",
+        "nuf"
+      ],
+      "station_stops": [
+        {
+          "location_type": "",
+          "parent_station": "nuf",
+          "platform_code": "",
+          "stop_id": "4cbe",
+          "stop_lat": "48.74454",
+          "stop_lon": "11.437337",
+          "stop_name": "Ingolstadt Hbf"
+        },
+        {
+          "location_type": "1",
+          "parent_station": "",
+          "platform_code": "",
+          "stop_id": "nuf",
+          "stop_lat": "48.74454",
+          "stop_lon": "11.437341",
+          "stop_name": "Ingolstadt Hbf"
+        }
+      ],
+      "station_template_count": 813,
+      "url": "https://download.gtfs.de/germany/rv_free/latest.zip",
+      "valid_from": "2026-11-21",
+      "valid_through": "2026-12-21"
+    }
+  },
+  "gtfs_specification": "https://gtfs.org/documentation/schedule/reference/",
+  "integration_ready": false,
+  "modeled_platforms": [
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "observation_minutes": 1440.0,
+  "output_sha256": {
+    "duplicate_review.csv": "a96864153677f37244fcd275525fe562cabcb26443b2120b5861e5e3a9c97eaf",
+    "excluded_trains.csv": "71098d006724c97744d2677ad7979b21854412302b622188364f1220a3e9f535",
+    "initial_occupancy.csv": "a09ee652987da8ecff6ffafef2f9246d227732952affb3ee54eb98706f89e760",
+    "normalized_timetable.csv": "da435599403b3ea56a0e25ed48335c0ac4b007d2ec81827ae206094b8f38c967",
+    "route_mapping_review.csv": "144261c7008b9020e8930c9468d0e618a7792cf81508675498bb49158176cc80",
+    "scheduled_occupancy.png": "d8936cc2d941bed901594ee9f53c638c6885ca10e223151352e16dbdd794a704",
+    "scheduled_occupancy_conflicts.csv": "ebaddfc80bbc6e2dc89fdcea6ac7fc65586a7518ebd2a95bdd2b350131613f70",
+    "timetable.csv": "d8f4389b4b6f786d8d805261765cdb9cac892f846069c78d762592aae0ef12e8",
+    "timetable_overview.png": "517e13965fad85042c373ad4227d214c2e5ea91a2bb4399d1ecb9c74e5aac346",
+    "unresolved_records.csv": "68efe8d4167bc1786063e0ac757fe90163f6fb55094437870c03ded86301a2e0",
+    "validation_report.md": "43d781537907a6604a4f63e1b41a599552c37571ab0a083d9b9401ec4d53188d"
+  },
+  "platform_evidence": {
+    "completeness_review": [
+      {
+        "departure": "06:02",
+        "document": "aenderung",
+        "finding": "The poster lists the Regensburg service and a 6 December cancellation. GTFS has RB17 at 06:06 with different arrival timing. Shared identity is unverified.",
+        "page": 4,
+        "train": "RB 17 84115"
+      },
+      {
+        "departure": "06:12",
+        "document": "aenderung",
+        "finding": "This Ulm departure has no exact time-and-line match in GTFS. The 05:56 GTFS service reaches Ulm at the same time. Shared identity is unverified.",
+        "page": 4,
+        "train": "RB 15 84256"
+      },
+      {
+        "departure": "07:05",
+        "document": "aenderung",
+        "finding": "The same-time GTFS call is labeled RB17 and reaches Regensburg 12 minutes later. RE18 appears elsewhere in the regional archive but has no active Ingolstadt call on 24 November. Shared identity is unverified.",
+        "page": 5,
+        "train": "RE 18 84117"
+      },
+      {
+        "departure": "08:11",
+        "document": "aenderung",
+        "finding": "The nearby GTFS departure is at 08:12 and reaches München one minute later. The regular-poster 08:12 match identifies a different train number. Shared identity is unverified.",
+        "page": 5,
+        "train": "RE 1 59401"
+      },
+      {
+        "departure": "11:08",
+        "document": "aenderung",
+        "finding": "GTFS lists an 11:05 Dasing departure with the same destination time. The 11:05 amendment entry is Sunday-only. Shared identity is unverified.",
+        "page": 6,
+        "train": "RB 13 86679"
+      }
+    ],
+    "date": "2026-11-24",
+    "index": "station_poster_review.json",
+    "index_sha256": "fd7224fbcd560b47a7d10ffff55673bd6812216b4b95704089668bf46aa51779",
+    "matches_file": "station_poster_review_2026-11-24.csv",
+    "matches_sha256": "eba28505c8043065b3fc4c59f7697cb5728b1bdfed584f38cf15ea946133f2ab",
+    "review": "Date-scoped crosswalk from dated GTFS calls to DB departure posters. The regular poster is valid from 2025-12-14 with data dated 2026-06-24. The amendment is valid from 2026-11-23. Reviewed column geometry, operating-day notes and amendment precedence. Base rows require exact departure, service label, next stop and destination. Amendments require matching departure, service label and effective destination. Terminating calls lack departure-poster evidence.",
+    "row_count": 214,
+    "status": "applied"
+  },
+  "readiness": "provisional",
+  "schema_version": 1,
+  "selected_date": "2026-11-24",
+  "station": "Ingolstadt Hbf",
+  "station_posters": {
+    "aenderung": {
+      "bytes": 355847,
+      "documentation_url": "https://db.info/ingolstadt-hbf/fahrplan",
+      "downloaded_at_utc": "2026-11-27T18:06:23.632898+00:00",
+      "file": "aenderungsfahrplan.pdf",
+      "http_last_modified": "Fri, 27 Nov 2026 02:01:29 GMT",
+      "license": "No reuse license verified",
+      "license_url": null,
+      "resolved_url": "https://db.info/downloads/schedule/Aenderungstafel_2993.pdf",
+      "sha256": "b0fb818a4a088d288e578d350497f052a7cbc968de18bddf71c7dd30fd500398",
+      "url": "https://db.info/downloads/schedule/Aenderungstafel_2993.pdf"
+    },
+    "regel": {
+      "bytes": 128525,
+      "documentation_url": "https://db.info/ingolstadt-hbf/fahrplan",
+      "downloaded_at_utc": "2026-11-27T18:06:23.087374+00:00",
+      "file": "regelfahrplan.pdf",
+      "http_last_modified": "Thu, 25 Jun 2026 09:01:03 GMT",
+      "license": "No reuse license verified",
+      "license_url": null,
+      "resolved_url": "https://db.info/downloads/schedule/Regeltafel_2993.pdf",
+      "sha256": "10b4fef8bdcd52d8f45d2aa477c5445fd3e095568a28f718633f863a418c1778",
+      "url": "https://db.info/downloads/schedule/Regeltafel_2993.pdf"
+    }
+  },
+  "timezone": "Europe/Berlin",
+  "warnings": [
+    "78 calls have unknown or conflicting platforms.",
+    "19 known modeled-platform calls have blocking issues.",
+    "126 modeled-platform calls need compatibility review.",
+    "107 modeled-platform calls use a provisional minimum dwell.",
+    "5 DB poster entries need a GTFS completeness review.",
+    "Some passenger train numbers are unavailable. Deterministic source IDs are retained.",
+    "79 calls have an unclassified or ambiguous route group."
+  ],
+  "window_end_exclusive": "2026-11-24T23:00:00+00:00",
+  "window_start": "2026-11-23T23:00:00+00:00"
+}

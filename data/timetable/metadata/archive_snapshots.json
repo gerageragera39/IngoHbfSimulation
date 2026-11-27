@@ -1,0 +1,30 @@
+{
+  "aenderung": {
+    "downloaded_at_utc": "2026-11-27T18:06:23.632898+00:00",
+    "http_last_modified": "Fri, 27 Nov 2026 02:01:29 GMT",
+    "resolved_url": "https://db.info/downloads/schedule/Aenderungstafel_2993.pdf",
+    "sha256": "b0fb818a4a088d288e578d350497f052a7cbc968de18bddf71c7dd30fd500398",
+    "url": "https://db.info/downloads/schedule/Aenderungstafel_2993.pdf"
+  },
+  "fv": {
+    "downloaded_at_utc": "2026-11-27T18:06:19.758776+00:00",
+    "http_last_modified": "Sat, 21 Nov 2026 09:42:12 GMT",
+    "resolved_url": "https://download.gtfs.de/germany/fv_free/latest.zip",
+    "sha256": "0fe1458a7a63c4167c708add97e53fe03d1b94c059f268e4969d6dca3200d85d",
+    "url": "https://download.gtfs.de/germany/fv_free/latest.zip"
+  },
+  "regel": {
+    "downloaded_at_utc": "2026-11-27T18:06:23.087374+00:00",
+    "http_last_modified": "Thu, 25 Jun 2026 09:01:03 GMT",
+    "resolved_url": "https://db.info/downloads/schedule/Regeltafel_2993.pdf",
+    "sha256": "10b4fef8bdcd52d8f45d2aa477c5445fd3e095568a28f718633f863a418c1778",
+    "url": "https://db.info/downloads/schedule/Regeltafel_2993.pdf"
+  },
+  "rv": {
+    "downloaded_at_utc": "2026-11-27T18:06:22.304905+00:00",
+    "http_last_modified": "Sat, 21 Nov 2026 09:42:35 GMT",
+    "resolved_url": "https://download.gtfs.de/germany/rv_free/latest.zip",
+    "sha256": "246f9224417c3f7ddba15329162b3a954325b805c9d5c4b7830c60d1e9ccee26",
+    "url": "https://download.gtfs.de/germany/rv_free/latest.zip"
+  }
+}

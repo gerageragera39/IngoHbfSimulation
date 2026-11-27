@@ -1,0 +1,89 @@
+{
+  "description": "Neighbor stations and route labels are GTFS observations. Proposed alternative platforms for the six legacy groups come from route_catalog.csv and the model's two Sources. No infrastructure authority has verified the alternatives for real train paths.",
+  "rules": [
+    {
+      "group": "RB16_S",
+      "match": {"line": ["RB16"], "previous_station": ["Ingolstadt Nord"], "next_station": ["Baar-Ebenhausen", "Rohrbach (Ilm)"]},
+      "allowed_platforms": ["2", "3"],
+      "basis": "legacy_model_assumption",
+      "enable_alternatives": false
+    },
+    {
+      "group": "RB16_N",
+      "match": {"line": ["RB16"], "previous_station": ["Baar-Ebenhausen", "Rohrbach (Ilm)"], "next_station": ["Ingolstadt Nord"]},
+      "allowed_platforms": ["4", "5"],
+      "basis": "legacy_model_assumption",
+      "enable_alternatives": false
+    },
+    {
+      "group": "RE1_S",
+      "match": {"line": ["RE1"], "previous_station": ["Roth", "Kinding (Altmühltal)", "Ingolstadt Nord"], "next_station": ["Rohrbach (Ilm)"]},
+      "allowed_platforms": ["2", "3", "5"],
+      "basis": "legacy_model_assumption",
+      "enable_alternatives": false
+    },
+    {
+      "group": "RE1_N",
+      "match": {"line": ["RE1"], "previous_station": ["Rohrbach (Ilm)"], "next_station": ["Roth", "Kinding (Altmühltal)", "Ingolstadt Nord"]},
+      "allowed_platforms": ["4", "5"],
+      "basis": "legacy_model_assumption",
+      "enable_alternatives": false
+    },
+    {
+      "group": "ICE_S",
+      "match": {"train_category": ["ICE"], "previous_station": ["Nürnberg Hbf", "Würzburg Hbf", "Fürth (Bay) Hbf"], "next_station": ["München Hbf"]},
+      "allowed_platforms": ["3"],
+      "basis": "legacy_model_assumption",
+      "enable_alternatives": false
+    },
+    {
+      "group": "ICE_N",
+      "match": {"train_category": ["ICE"], "previous_station": ["München Hbf"], "next_station": ["Nürnberg Hbf", "Fürth (Bay) Hbf", "Würzburg Hbf"]},
+      "allowed_platforms": ["4", "5"],
+      "basis": "legacy_model_assumption",
+      "enable_alternatives": false
+    },
+    {
+      "group": "RB17_REGENSBURG",
+      "match": {"line": ["RB17"], "next_station": ["Ernsgaden"]},
+      "allowed_platforms": [],
+      "basis": "gtfs_direction_observation",
+      "enable_alternatives": false
+    },
+    {
+      "group": "RB17_INGOLSTADT_NORD",
+      "match": {"line": ["RB17"], "next_station": ["Ingolstadt Nord"]},
+      "allowed_platforms": [],
+      "basis": "gtfs_direction_observation",
+      "enable_alternatives": false
+    },
+    {
+      "group": "RB15_WEST",
+      "match": {"line": ["RB15"], "next_station": ["Weichering"]},
+      "allowed_platforms": [],
+      "basis": "gtfs_direction_observation",
+      "enable_alternatives": false
+    },
+    {
+      "group": "RB15_INGOLSTADT_NORD",
+      "match": {"line": ["RB15"], "previous_station": ["Weichering"], "next_station": ["Ingolstadt Nord"]},
+      "allowed_platforms": [],
+      "basis": "gtfs_direction_observation",
+      "enable_alternatives": false
+    },
+    {
+      "group": "RB13_DASING",
+      "match": {"line": ["RB13"], "next_station": ["Brunnen (Oberbay)"]},
+      "allowed_platforms": [],
+      "basis": "gtfs_direction_observation",
+      "enable_alternatives": false
+    },
+    {
+      "group": "RB14_EICHSTAETT",
+      "match": {"line": ["RB14"], "next_station": ["Ingolstadt Nord"]},
+      "allowed_platforms": [],
+      "basis": "gtfs_direction_observation",
+      "enable_alternatives": false
+    }
+  ]
+}

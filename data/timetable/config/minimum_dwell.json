@@ -1,0 +1,7 @@
+{
+  "default_through_minutes": 1,
+  "categories": {},
+  "reviewed": false,
+  "legacy_synthetic_minutes": 3,
+  "basis": "Provisional sensitivity baseline. On 2026-11-24, 93 of 138 through calls have scheduled dwell below three minutes, including 31 calls scheduled for one minute. Minimum operational dwell has not been measured. Terminal occupation is unknown and is excluded from this rule."
+}

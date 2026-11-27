@@ -1,0 +1,63 @@
+{
+  "station": "Ingolstadt Hbf",
+  "station_eva": "8000183",
+  "modeled_platforms": [2, 3, 4, 5],
+  "closure_start": "2026-10-30",
+  "closure_end": "2026-12-12",
+  "min_repeat_days": 2,
+  "min_repeat_train_numbers": 2,
+  "stations": {
+    "MUC_5501": ["Baar-Ebenhausen", "Reichertshofen", "Rohrbach (Ilm)", "Pfaffenhofen (Ilm)", "Reichertshausen (Ilm)", "Petershausen (Obb)", "Dachau Bahnhof", "München Hbf", "München Ost", "München-Pasing"],
+    "NORD_5501": ["Ingolstadt Nord", "Ingolstadt Audi", "Gaimersheim", "Eitensheim", "Tauberfeld", "Adelschlag", "Eichstätt Bahnhof", "Eichstätt Stadt", "Dollnstein", "Solnhofen", "Pappenheim"],
+    "TREUCHTLINGEN_5501": ["Treuchtlingen", "Weißenburg (Bay)", "Pleinfeld", "Georgensgmünd", "Roth", "Schwabach"],
+    "N_SFS_5934": ["Kinding (Altmühltal)", "Allersberg (Rothsee)"],
+    "REG_5851": ["Ernsgaden", "Münchsmünster", "Vohburg", "Vohburg-Rockolding", "Neustadt (Donau)", "Abensberg", "Saal (Donau)", "Bad Abbach", "Regensburg-Prüfening", "Regensburg Hbf"],
+    "DONAU_5382": ["Weichering", "Rohrenfeld", "Neuburg (Donau)", "Unterhausen (Bay)", "Burgheim", "Straß-Moos", "Rain", "Genderkingen", "Donauwörth", "Dillingen (Donau)", "Günzburg", "Ulm Hbf"],
+    "AUG_5381": ["Brunnen (Oberbay)", "Schrobenhausen", "Radersdorf", "Aichach", "Dasing", "Friedberg (b Augsburg)", "Augsburg-Hochzoll", "Augsburg Hbf"]
+  },
+  "line_transitions": ["RB17|RB15", "RB15|RB17", "RE18|RB15", "RB15|RE18"],
+  "baseline_schedule_number_crosswalk": [
+    {
+      "date": "2026-11-24",
+      "gtfs_train_id": "rv:uiwr:2026-11-24:20",
+      "gtfs_train_number": "59095",
+      "openboards_train_number": "59139",
+      "openboards_journey_id": "20261124-d9c3b5eb-8c85-324b-9303-36e7a01b6c31",
+      "basis": "The date-specific DB amendment poster (page 6) lists RB16 59095 as the replacement for 59139. OpenBoards has only 59139, with two uncancelled REAL reports. The GTFS schedule and the board agree on the planned times, platform and itinerary direction. The baseline keeps the OpenBoards identity and one planned slot, with the poster number preserved separately. Which train number actually ran remains uncertain."
+    }
+  ],
+  "north_direction_markers": ["Nürnberg Hbf", "Fürth (Bay) Hbf", "Würzburg Hbf", "Erlangen", "Bamberg", "Erfurt Hbf", "Halle (Saale) Hbf", "Berlin Hbf", "Berlin Gesundbrunnen", "Berlin Südkreuz", "Hamburg Hbf", "Hamburg Dammtor", "Essen Hbf", "Hannover Hbf", "Göttingen", "Bremen Hbf", "Kiel Hbf", "Kassel-Wilhelmshöhe", "Frankfurt (Main) Hbf", "Leipzig Hbf", "Dortmund Hbf", "Köln Hbf"],
+  "groups": {
+    "ICE|NORD_5501|MUC_5501": "ICE_S",
+    "ICE|MUC_5501|NORD_5501": "ICE_N",
+    "RE1|NORD_5501|MUC_5501": "RE1_S",
+    "RE1|MUC_5501|NORD_5501": "RE1_N",
+    "RB16|NORD_5501|MUC_5501": "RB16_S",
+    "RB16|MUC_5501|NORD_5501": "RB16_N",
+    "RB15|DONAU_5382|NORD_5501": "RB15_DONAU_NORD",
+    "RB15|NORD_5501|DONAU_5382": "RB15_NORD_DONAU",
+    "RB17|REG_5851|NORD_5501": "RB17_REG_NORD",
+    "RB17|NORD_5501|REG_5851": "RB17_NORD_REG",
+    "RB15|RB17|DONAU_5382|REG_5851": "RB15_RB17_DONAU_REG",
+    "RB17|RB15|REG_5851|DONAU_5382": "RB17_RB15_REG_DONAU",
+    "RB15|RE18|DONAU_5382|REG_5851": "RB15_RE18_DONAU_REG",
+    "RE18|RB15|REG_5851|DONAU_5382": "RE18_RB15_REG_DONAU"
+  },
+  "research_reference_platforms": {
+    "ICE_S": [2, 3],
+    "ICE_N": [4],
+    "RE1_S": [3],
+    "RE1_N": [4],
+    "RB16_S": [2, 3],
+    "RB16_N": [4, 5],
+    "RB15_DONAU_NORD": [3, 4],
+    "RB15_NORD_DONAU": [],
+    "RB17_REG_NORD": [2, 5],
+    "RB17_NORD_REG": [5]
+  },
+  "expanded_assumptions": {
+    "ICE_N": {"5": "Legacy ICE_N model assumption for the same north-facing Hbf throat. Applicability to the recorded rolling stock and closure itineraries is unverified."},
+    "RE1_S": {"2": "Legacy RE1_S model assumption and shared local 5501 north/south approaches. The original model assumed a north SFS connection.", "5": "Legacy RE1_S model assumption and shared local 5501 north/south approaches. The original model assumed a north SFS connection."},
+    "RE1_N": {"5": "Legacy RE1_N model assumption and shared local 5501 north/south approaches. The original model assumed a north SFS connection."}
+  }
+}

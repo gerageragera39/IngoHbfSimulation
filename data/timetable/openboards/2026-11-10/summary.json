@@ -1,0 +1,36 @@
+{
+  "station_events": 580,
+  "station_calls": 275,
+  "target_calls": 130,
+  "target_by_service": {
+    "RE1": 21,
+    "ICE": 42,
+    "RB16": 51,
+    "RB": 16
+  },
+  "target_by_status": {
+    "reported_day_only": 1,
+    "candidate": 92,
+    "outside_platform_scope": 11,
+    "review": 26
+  },
+  "unclassified_regional_events": 22,
+  "candidate_count": 92,
+  "review_count": 26,
+  "event_issue_count": 0,
+  "target_scheduled_in_day": 129,
+  "target_reported_in_day": 128,
+  "candidate_by_platform": {
+    "3": 36,
+    "4": 35,
+    "2": 13,
+    "5": 8
+  },
+  "http_rate_limit": {
+    "minimum_request_spacing_seconds": 1.0,
+    "http_attempts": 72,
+    "max_attempts_in_rolling_one_second": 1,
+    "subscription_limit_per_second": 10,
+    "scope": "this process only; includes retries; cached reads excluded"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-24",
+  "matches_file": "station_poster_review_2026-11-24.csv",
+  "review": "Date-scoped crosswalk from dated GTFS calls to DB departure posters. The regular poster is valid from 2025-12-14 with data dated 2026-06-24. The amendment is valid from 2026-11-23. Reviewed column geometry, operating-day notes and amendment precedence. Base rows require exact departure, service label, next stop and destination. Amendments require matching departure, service label and effective destination. Terminating calls lack departure-poster evidence.",
+  "completeness_review": [
+    {"document": "aenderung", "page": 4, "departure": "06:02", "train": "RB 17 84115", "finding": "The poster lists the Regensburg service and a 6 December cancellation. GTFS has RB17 at 06:06 with different arrival timing. Shared identity is unverified."},
+    {"document": "aenderung", "page": 4, "departure": "06:12", "train": "RB 15 84256", "finding": "This Ulm departure has no exact time-and-line match in GTFS. The 05:56 GTFS service reaches Ulm at the same time. Shared identity is unverified."},
+    {"document": "aenderung", "page": 5, "departure": "07:05", "train": "RE 18 84117", "finding": "The same-time GTFS call is labeled RB17 and reaches Regensburg 12 minutes later. RE18 appears elsewhere in the regional archive but has no active Ingolstadt call on 24 November. Shared identity is unverified."},
+    {"document": "aenderung", "page": 5, "departure": "08:11", "train": "RE 1 59401", "finding": "The nearby GTFS departure is at 08:12 and reaches München one minute later. The regular-poster 08:12 match identifies a different train number. Shared identity is unverified."},
+    {"document": "aenderung", "page": 6, "departure": "11:08", "train": "RB 13 86679", "finding": "GTFS lists an 11:05 Dasing departure with the same destination time. The 11:05 amendment entry is Sunday-only. Shared identity is unverified."}
+  ],
+  "source_sha256": {
+    "aenderung": "b0fb818a4a088d288e578d350497f052a7cbc968de18bddf71c7dd30fd500398",
+    "fv": "0fe1458a7a63c4167c708add97e53fe03d1b94c059f268e4969d6dca3200d85d",
+    "regel": "10b4fef8bdcd52d8f45d2aa477c5445fd3e095568a28f718633f863a418c1778",
+    "rv": "246f9224417c3f7ddba15329162b3a954325b805c9d5c4b7830c60d1e9ccee26"
+  },
+  "station": "Ingolstadt Hbf"
+}

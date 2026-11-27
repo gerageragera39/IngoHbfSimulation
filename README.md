@@ -4,7 +4,7 @@
 
 A discrete-event simulation of platform occupancy and dispatching at **Ingolstadt Hauptbahnhof (Germany)**. The research question is whether dynamically assigning trains to compatible platforms can reduce **station-induced secondary delays**, compared with keeping planned platform assignments.
 
-The prototype uses **AnyLogic 8.9.10**, the **Process Modeling Library (PML)**, and Java functions within AnyLogic. Python validates completed runs and analyzes paired Monte Carlo experiments. Real timetable integration and the OR-Tools optimizer are planned.
+The prototype uses **AnyLogic 8.9.10**, the **Process Modeling Library (PML)**, and Java functions within AnyLogic. Python validates completed runs and analyzes paired Monte Carlo experiments. Phase 2.1 adds a reproducible GTFS timetable and validation reports. AnyLogic integration is planned for Phase 2.2.
 
 ## 1. Research question and objectives
 
@@ -144,7 +144,7 @@ Completed experiments provide per-train CSV exports with platform, timing, secon
 | FIXED_DB | **Implemented** | Planned platform only |
 | GREEDY | **Implemented** | Online assignment to free eligible platforms |
 | Console logging / basic delay KPIs | **Implemented** | Per-train events and aggregate summary |
-| Verified real DB timetable / `trains.csv` | **Not implemented** | Synthetic arrivals used now |
+| Full-day GTFS timetable | **Provisional** | Phase 2.1 extracts Ingolstadt Hbf passenger stops. Platform, occupation and compatibility review is required for AnyLogic integration. |
 | Random incoming delays with reproducible seeds | **Implemented** | Synthetic input scenarios |
 | Per-train CSV output | **Implemented** | AnyLogic exports in `Ingo/results/` |
 | Python + OR-Tools optimizer | **Not implemented** | Planned |
@@ -179,7 +179,7 @@ In this particular scenario, GREEDY reduced total secondary delay by **50%**. Fo
 5. Run the `Simulation` experiment and inspect the AnyLogic console.
 6. Run the other policy on the same synthetic settings and compare the final summary.
 
-The current test setup creates **5 trains per Source**, with a **2-minute interarrival time** for each stream, **3-minute minimum dwell**, and planned departure **5 minutes after the synthetic ready/arrival time**. Incoming delay is zero. The saved `Simulation` experiment uses a **500-minute stop time**; the ten-train test finishes much earlier.
+The saved model creates **60 trains per Source** at **2-minute intervals**. It uses a **3-minute minimum dwell** and schedules departure **5 minutes after the scheduled arrival**. Incoming delays are generated from the scenario seed and train ID. The saved `Simulation` experiment has a **500-minute stop time**. Set `trainsPerDirection` to 5 and `zeroDelayProbability` to 1.0 to repeat the ten-train smoke test.
 
 **Known pitfall:** if `Delay time` is configured in *seconds* while its Java expression computes minutes, five minutes will be treated as five seconds (shown as `0.0833333` model minutes). The current committed `Ingo.alp` has the Delay units set to **minutes**.
 
@@ -200,6 +200,10 @@ python -m streamlit run analysis/station_dashboard.py
 
 Run the automated tests with `python -m unittest discover -s tests -v`. See the [Russian dashboard guide](analysis/DASHBOARD_README_RU.md) for validation, filtering, and interpretation.
 
+### Prepare the full-day timetable
+
+Use the [Phase 2.1.2 OpenBoards guide](data/timetable/README.md#phase-212--openboards-history-and-simulation-timetable) to reproduce the 28-day offline analysis and 24 November 2026 scheduled timetable. The [historical platform report](data/timetable/historical_analysis/reports/historical_platform_report.md) documents compatibility evidence, timetable readiness and the high-speed railway closure. The earlier [GTFS validation report](data/timetable/processed/validation_report.md) documents the supplementary schedule extraction.
+
 ## 9. Repository layout
 
 ```text
@@ -209,15 +213,17 @@ IngoHbfSimulation/
 │   ├── Ingo.original.alp    # Earlier project backup
 │   └── results/             # Completed simulation CSV exports
 ├── analysis/                # CLI analysis, Streamlit dashboard, reference outputs
-├── tests/                   # Dashboard tests
+├── data/timetable/          # Station timetable, configuration and source provenance
+├── scripts/                 # GTFS acquisition, preparation and validation
+├── tests/                   # Dashboard and timetable tests
 ├── route_catalog.csv        # Route groups and permitted platforms
 └── README.md                # This documentation
 ```
 
 ## 10. Roadmap
 
-1. **Validate real timetable inputs.** Choose one operating date and time window; gather all trains using Gleis 2–5; verify arrivals, departures, planned platforms and alternate eligibility; distinguish facts from assumptions.
-2. **Integrate `trains.csv`.** Replace hard-coded synthetic arrivals with scheduled train requests, preserving the existing PML architecture.
+1. **Resolve Phase 2.1 data gaps.** Review missing and conflicting planned platforms, terminal occupation and alternate-platform eligibility for Gleis 2–5.
+2. **Integrate the timetable.** Add a real-timetable input mode alongside the existing synthetic experiments.
 3. **Add reproducible incoming delays.** Record the random seed and complete delay vector for each scenario.
 4. **Improve validation and logging.** Assert capacity/compatibility invariants, save per-train CSV records, and evaluate FIXED_DB and GREEDY on identical scenarios.
 5. **Integrate Python + OR-Tools.** Start with a hand-verifiable optimization example and file-based exchange, then rolling-horizon dispatch decisions.
