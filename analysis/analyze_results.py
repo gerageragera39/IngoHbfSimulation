@@ -64,6 +64,104 @@ def save_csv(path, rows, headers):
         writer.writerows(rows)
 
 
+def validate_passenger_transfer(t, prefix):
+    # Backward compatibility with old CSV files
+    if "passenger_transfer_min" not in t:
+        require(
+            not t["scenario_id"].startswith("P2_"),
+            f"{prefix}: missing transfer data",
+        )
+        return
+
+    planned = int(t["planned_platform"])
+    assigned = int(t["assigned_platform"])
+
+    mode = t.get("transfer_mode", "UNIFORM")
+
+    require(
+        mode in ("UNIFORM", "MATRIX"),
+        f"{prefix}: invalid transfer mode",
+    )
+
+    cross = float(t["transfer_time_setting"])
+    same = float(
+        t.get("same_island_transfer_setting", 0.0)
+    )
+
+    require(
+        math.isfinite(cross) and cross >= 0
+        and math.isfinite(same) and same >= 0,
+        f"{prefix}: invalid transfer setting",
+    )
+
+    if planned == assigned:
+        expected_transfer = 0.0
+
+    elif mode == "UNIFORM":
+        expected_transfer = cross
+
+    elif (planned - 2) // 2 == (assigned - 2) // 2:
+        expected_transfer = same
+
+    else:
+        expected_transfer = cross
+
+    actual_transfer = float(t["passenger_transfer_min"])
+    assignment = float(t["assignment_time"])
+    passengers_ready = float(t["passengers_ready_time"])
+
+    arrival = float(t["platform_arrival"])
+    departure = float(t["actual_departure"])
+    scheduled_departure = float(t["scheduled_departure"])
+    min_dwell = float(t["min_dwell"])
+
+    require(
+        close(actual_transfer, expected_transfer),
+        f"{prefix}: incorrect transfer time",
+    )
+
+    require(
+        float(t["ready_time"]) - TOL
+        <= assignment <= arrival + TOL,
+        f"{prefix}: incorrect assignment time",
+    )
+
+    require(
+        close(
+            passengers_ready,
+            assignment + expected_transfer,
+        ),
+        f"{prefix}: incorrect passenger ready time",
+    )
+
+    departure_without_transfer = max(
+        scheduled_departure,
+        arrival + min_dwell,
+    )
+
+    expected_departure = max(
+        departure_without_transfer,
+        passengers_ready,
+    )
+
+    require(
+        close(departure, expected_departure),
+        f"{prefix}: incorrect departure time",
+    )
+
+    expected_passenger_delay = max(
+        0.0,
+        passengers_ready - departure_without_transfer,
+    )
+
+    require(
+        close(
+            t["passenger_induced_delay_min"],
+            expected_passenger_delay,
+        ),
+        f"{prefix}: incorrect passenger-induced delay",
+    )
+
 def validate_one(policy, rows_by_train, scenario_by_train, scenario_id, seed):
     occupancy = defaultdict(list)
     for tid, t in rows_by_train.items():
@@ -106,6 +204,7 @@ def validate_one(policy, rows_by_train, scenario_by_train, scenario_id, seed):
                 f"{prefix}: waiting time mismatch")
         expected_secondary = max(0.0, departure - max(scheduled_departure, ready + min_dwell))
         require(close(secondary, expected_secondary), f"{prefix}: secondary delay mismatch")
+        validate_passenger_transfer(t, prefix)
         occupancy[assigned].append((platform_arrival, departure, tid))
 
     for platform, windows in occupancy.items():
@@ -146,6 +245,21 @@ def analyse_scenario(key, paths, scenario_dir, expected_trains):
                 f"{scenario_id} seed{seed}: {len(inputs)} trains, expected {expected_trains}")
     validate_one("FIXED_DB", fixed, inputs, scenario_id, seed)
     validate_one("GREEDY", greedy, inputs, scenario_id, seed)
+    # Verify identical passenger model settings
+    if scenario_id.startswith("P2_"):
+        configurations = set()
+
+        for row in list(fixed.values()) + list(greedy.values()):
+            configurations.add((
+                row["transfer_mode"],
+                float(row["transfer_time_setting"]),
+                float(row["same_island_transfer_setting"]),
+            ))
+
+        require(
+            len(configurations) == 1,
+            f"{scenario_id}: inconsistent transfer settings",
+        )
     for tid in fixed:
         for col in ("route_group", "planned_platform", "scheduled_arrival",
                     "scheduled_departure", "incoming_delay", "ready_time", "min_dwell"):

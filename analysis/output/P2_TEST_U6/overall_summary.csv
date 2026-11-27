@@ -1,0 +1,12 @@
+metric,value
+number_of_scenarios,1
+number_of_paired_train_observations,120
+sum_fixed_delay_min,459.28936509099185
+sum_greedy_delay_min,1004.987465363821
+total_delay_reduction_pct,-118.81357195473457
+mean_paired_scenario_saving_min,-545.6981002728292
+paired_saving_ci95_lower_min,
+paired_saving_ci95_upper_min,
+scenarios_greedy_better,0
+scenarios_equal,0
+scenarios_greedy_worse,1

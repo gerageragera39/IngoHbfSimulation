@@ -451,7 +451,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["P1_T5"]]></Code>
+							<Code><![CDATA["P2_TEST_M6"]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1794841794456</Id>
@@ -475,10 +475,58 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[5.0]]></Code>
+							<Code><![CDATA[6.0]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1795795258069</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1795797048812</Id>
+					<Name><![CDATA[runTransferMode]]></Name>
+					<X>60</X><Y>840</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["MATRIX"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1795797048810</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1795797073482</Id>
+					<Name><![CDATA[runSameIslandTransferTime]]></Name>
+					<X>250</X><Y>840</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1.0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1795797073480</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -1158,6 +1206,51 @@ while (true) {
 					</Parameter>
 					<Body><![CDATA[double eps = 1e-8;
 
+// Validate assigned passenger transfer time
+double expectedTransfer = getTransferTime(
+    t.plannedPlatform,
+    t.assignedPlatform
+);
+
+if (Math.abs(t.passengerTransferTime -
+             expectedTransfer) > eps) {
+
+    throw new IllegalStateException(
+        "Incorrect transfer time: " + t.trainId
+    );
+}
+
+// Validate passenger readiness
+double expectedPassengersReady =
+    t.assignmentTime + expectedTransfer;
+
+if (Math.abs(t.passengersReadyTime -
+             expectedPassengersReady) > eps) {
+
+    throw new IllegalStateException(
+        "Incorrect passenger readiness: " +
+        t.trainId
+    );
+}
+
+// Validate direct passenger-induced delay
+double expectedPassengerDelay = Math.max(
+    0.0,
+    expectedPassengersReady - Math.max(
+        t.scheduledDeparture,
+        t.actualArrival + t.minDwell
+    )
+);
+
+if (Math.abs(t.passengerInducedDelay -
+             expectedPassengerDelay) > eps) {
+
+    throw new IllegalStateException(
+        "Incorrect passenger-induced delay: " +
+        t.trainId
+    );
+}
+
 // Train cannot enter before it is ready
 if (t.actualArrival + eps < t.readyTime) {
 
@@ -1276,7 +1369,9 @@ resultRows.add(
     t.assignmentTime + "," +
     t.passengerTransferTime + "," +
     t.passengersReadyTime + "," +
-    t.passengerInducedDelay
+    t.passengerInducedDelay + "," +
+    runTransferMode + "," +
+    runSameIslandTransferTime
 );
 
 // Обновляем общую статистику
@@ -1335,7 +1430,9 @@ try {
 		"assignment_time",
 		"passenger_transfer_min",
 		"passengers_ready_time",
-		"passenger_induced_delay_min"
+		"passenger_induced_delay_min",
+		"transfer_mode",
+		"same_island_transfer_setting"
     );
 
     java.util.ArrayList<String> lines =
@@ -1545,7 +1642,8 @@ try {
 						<Name><![CDATA[toPlatform]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[if (fromPlatform < 2 || fromPlatform > 5 ||
+					<Body><![CDATA[
+if (fromPlatform < 2 || fromPlatform > 5 ||
     toPlatform < 2 || toPlatform > 5) {
 
     throw new IllegalArgumentException(
@@ -1553,21 +1651,53 @@ try {
     );
 }
 
+// Validate experiment parameters
 if (!Double.isFinite(runTransferTime) ||
-    runTransferTime < 0.0) {
+    runTransferTime < 0.0 ||
+    !Double.isFinite(runSameIslandTransferTime) ||
+    runSameIslandTransferTime < 0.0) {
 
     throw new IllegalArgumentException(
         "Invalid passenger transfer time"
     );
 }
 
-// No platform change
+if (!"UNIFORM".equals(runTransferMode) &&
+    !"MATRIX".equals(runTransferMode)) {
+
+    throw new IllegalArgumentException(
+        "Unknown transfer mode: " + runTransferMode
+    );
+}
+
+// No platform reassignment
 if (fromPlatform == toPlatform) {
     return 0.0;
 }
 
-// Passenger transfer between platforms
-return runTransferTime;]]></Body>
+// Previous model: identical transfer time
+if ("UNIFORM".equals(runTransferMode)) {
+    return runTransferTime;
+}
+
+// MATRIX mode
+double same = runSameIslandTransferTime;
+double cross = runTransferTime;
+
+// Rows: original platform
+// Columns: assigned platform
+// Platform order: 2, 3, 4, 5
+double[][] transferTimeMatrix = {
+    {0.0,   same, cross, cross},
+    {same,  0.0,  cross, cross},
+    {cross, cross, 0.0,  same},
+    {cross, cross, same, 0.0}
+};
+
+return transferTimeMatrix
+    [fromPlatform - 2]
+    [toPlatform - 2];
+]]></Body>
 				</Function>
 			</Functions>
 
@@ -3688,6 +3818,12 @@ if (completed == 2 * trainsPerDirection) {
 				<Parameter>
 					<ParameterName><![CDATA[runTransferTime]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[runTransferMode]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[runSameIslandTransferTime]]></ParameterName>
+				</Parameter>
 			</Parameters>
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -3739,8 +3875,8 @@ if (completed == 2 * trainsPerDirection) {
 				<Id>1794841794458</Id>
 				<Expression Class="CodeValue">
 					<Code><![CDATA[String.format(
-    "P1_BATCH_T%d_S%03d",
-    index < 20 ? 0 : (index < 40 ? 4 : 6),
+    "P2_MATRIX_T%d_S%03d",
+    2 + 2 * (index / 20),
     1 + (index / 2) % 10
 )]]></Code>
 				</Expression>
@@ -3748,8 +3884,14 @@ if (completed == 2 * trainsPerDirection) {
 			<FreeformParamValue>	
 				<Id>1795795258071</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[index < 20 ? 0.0 : (index < 40 ? 4.0 : 6.0)]]></Code>
+					<Code><![CDATA[2.0 + 2.0 * (index / 20)]]></Code>
 				</Expression>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1795797048812</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1795797073482</Id>
 			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1794841749514</Id>
@@ -3765,6 +3907,14 @@ if (completed == 2 * trainsPerDirection) {
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1795795258071</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1795797048812</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1795797073482</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
