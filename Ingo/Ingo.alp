@@ -436,7 +436,7 @@
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["S001_RNG2"]]></Code>
+							<Code><![CDATA["P1_BASELINE"]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1794841794456</Id>
@@ -3301,6 +3301,66 @@ if (completed == 2 * trainsPerDirection) {
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1795794596182</Id>
+					<Name><![CDATA[platformChanged]]></Name>
+					<X>90</X><Y>395</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1795794619674</Id>
+					<Name><![CDATA[assignmentTime]]></Name>
+					<X>295</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1795794627927</Id>
+					<Name><![CDATA[passengerTransferTime]]></Name>
+					<X>95</X><Y>445</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1795794628695</Id>
+					<Name><![CDATA[passengersReadyTime]]></Name>
+					<X>315</X><Y>445</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1795794629850</Id>
+					<Name><![CDATA[passengerInducedDelay]]></Name>
+					<X>525</X><Y>445</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
 			</Variables>
 
 
@@ -3431,8 +3491,8 @@ if (completed == 2 * trainsPerDirection) {
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1794700800000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1794712800000]]></FinalDate>
-				<FinalTime><![CDATA[200.0]]></FinalTime>
+				<FinalDate><![CDATA[1794730800000]]></FinalDate>
+				<FinalTime><![CDATA[500.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>
@@ -3487,8 +3547,8 @@ if (completed == 2 * trainsPerDirection) {
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1794700800000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1794712800000]]></FinalDate>	
-				<FinalTime><![CDATA[200.0]]></FinalTime>	
+				<FinalDate><![CDATA[1794730800000]]></FinalDate>	
+				<FinalTime><![CDATA[500.0]]></FinalTime>	
 			</ModelTimeProperties>
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
